@@ -448,3 +448,10 @@
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
 	list_reagents = list("nitrogen" = 24, "oxygen" = 6)
+
+/obj/item/reagent_containers/food/drinks/soda_cans/tab
+	name = "TaB"
+	desc = "A diet soft drink, manufactured by the Coca-Cola company."
+	icon_state = "tab"
+	list_reagents = list("tab" = 30)
+	foodtype = JUNKFOOD

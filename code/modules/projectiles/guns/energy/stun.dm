@@ -1,3 +1,4 @@
+
 /obj/item/gun/energy/taser
 	name = "taser gun"
 	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
@@ -17,6 +18,27 @@
 	can_flashlight = 0
 	pin = null
 	shaded_charge = 1
+
+
+/obj/item/gun/energy/ahab_tesla
+	name = "Ahab's Crosshairs"
+	desc = "A powerful tesla rifle styled after a legendary harpoon gun from a certain webcomic. Recharges over time. Avoid using without proper insulation!"
+	icon = 'icons/obj/guns/custom.dmi'
+	icon_state = "ahab"
+	item_state = "tesla"
+	ammo_type = list(/obj/item/ammo_casing/energy/ahab_tesla)
+	shaded_charge = 1
+	recoil = 2
+	fire_delay = 30
+	selfcharge = 1
+	charge_delay = 5
+	can_charge = 0
+	weapon_weight = WEAPON_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = SLOT_BACK
+	zoomable = TRUE
+	zoom_amt = 5
+	zoom_out_amt = 8
 
 /obj/item/gun/energy/e_gun/advtaser
 	name = "hybrid taser"

@@ -93,6 +93,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/poster/random_contraband(src)
 	new /obj/item/poster/random_official(src)
+	new /obj/item/device/credit_score(src)
 
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -105,6 +106,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/poster/random_contraband(src)
 	new /obj/item/poster/random_official(src)
+	new /obj/item/device/credit_score(src)
 
 
 // Engineer survival box
@@ -114,6 +116,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/poster/random_contraband(src)
 	new /obj/item/poster/random_official(src)
+	new /obj/item/device/credit_score(src)
 
 /obj/item/storage/box/engineer/radio/PopulateContents()
 	..() // we want the regular items too.
@@ -131,6 +134,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/poster/random_contraband(src)
 	new /obj/item/poster/random_official(src)
+	new /obj/item/device/credit_score(src)
 
 /obj/item/storage/box/security/radio/PopulateContents()
 	..() // we want the regular stuff too

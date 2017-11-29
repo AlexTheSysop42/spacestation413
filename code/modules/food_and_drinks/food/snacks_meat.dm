@@ -126,6 +126,16 @@
 	tastes = list("meat" = 3, "metal" = 1)
 	foodtype = MEAT
 
+/obj/item/reagent_containers/food/snacks/kebab/butt
+	name = "butt-kebab"
+	desc = "Butt on a stick."
+	icon_state = "buttkebab"
+	icon = 'icons/obj/food/food2.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list("nutriment" = 6, "vitamin" = 2)
+	tastes = list("butt" = 2, "metal" = 1)
+	foodtype = MEAT | GROSS
+
 /obj/item/reagent_containers/food/snacks/kebab/human
 	name = "human-kebab"
 	desc = "A human meat, on a stick."
@@ -187,7 +197,7 @@
 	visible_message("<span class='notice'>[src] expands!</span>")
 	var/mob/spammer = get_mob_by_key(fingerprintslast)
 	var/mob/living/carbon/monkey/bananas = new(drop_location())
-	bananas.log_message("Spawned via [src] at [COORD(src)], Last attached mob: [key_name(spammer)].", INDIVIDUAL_ATTACK_LOG) 
+	bananas.log_message("Spawned via [src] at [COORD(src)], Last attached mob: [key_name(spammer)].", INDIVIDUAL_ATTACK_LOG)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/enchiladas

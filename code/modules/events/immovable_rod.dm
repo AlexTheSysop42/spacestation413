@@ -100,3 +100,13 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		H.adjustBruteLoss(160)
 	if(L && (L.density || prob(10)))
 		L.ex_act(EXPLODE_HEAVY)
+
+/obj/effect/immovablerod/butt
+	name = "enormous ass"
+	desc = "godDAMN that ass is well rounded"
+	icon = 'icons/obj/butts.dmi'
+	icon_state = "butt"
+
+/obj/effect/immovablerod/butt/Initialize()
+	. = ..()
+	SpinAnimation(24,-1)

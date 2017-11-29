@@ -107,7 +107,9 @@
 			/obj/item/reagent_containers/food/snacks/grown/blumpkin = list("blumpkinjuice" = 0),
 			/obj/item/reagent_containers/food/snacks/grown/apple = list("applejuice" = 0),
 			/obj/item/reagent_containers/food/snacks/grown/grapes = list("grapejuice" = 0),
-			/obj/item/reagent_containers/food/snacks/grown/grapes/green = list("grapejuice" = 0))
+			/obj/item/reagent_containers/food/snacks/grown/grapes/green = list("grapejuice" = 0),
+			/obj/item/organ/butt = list("fartium" = 20),
+			/obj/item/storage/book/bible = list("holywater" = 100))
 
 	var/static/list/dried_items = list(
 			//Grinder stuff, but only if dry,

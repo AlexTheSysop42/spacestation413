@@ -734,7 +734,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	products = list(/obj/item/reagent_containers/food/drinks/soda_cans/cola = 10, /obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/soda_cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/space_up = 10, /obj/item/reagent_containers/food/drinks/soda_cans/pwr_game = 10,
-					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10, /obj/item/reagent_containers/glass/beaker/waterbottle = 10)
+					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10, /obj/item/reagent_containers/glass/beaker/waterbottle = 10,
+					/obj/item/reagent_containers/food/drinks/soda_cans/tab = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko = 6, /obj/item/reagent_containers/food/drinks/soda_cans/shamblers = 6)
 	premium = list(/obj/item/reagent_containers/food/drinks/drinkingglass/filled/nuka_cola = 1, /obj/item/reagent_containers/food/drinks/soda_cans/air = 1)
 	refill_canister = /obj/item/vending_refill/cola
@@ -790,7 +791,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	products = list(/obj/item/reagent_containers/food/drinks/soda_cans/cola = 10, /obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/soda_cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/space_up = 10, /obj/item/reagent_containers/food/drinks/soda_cans/pwr_game = 10,
-					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10, /obj/item/reagent_containers/food/drinks/soda_cans/shamblers = 10)
+					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10, /obj/item/reagent_containers/food/drinks/soda_cans/shamblers = 10,
+					/obj/item/reagent_containers/food/drinks/soda_cans/tab = 10)
 	product_slogans = "~Shake me up some of that Shambler's Juice!~"
 	product_ads = "Refreshing!;Jyrbv dv lg jfdv fw kyrk Jyrdscvi'j Alztv!;Over 1 trillion souls drank!;Thirsty? Nyp efk uizeb kyv uribevjj?;Kyv Jyrdscvi uizebj kyv ezxyk!;Drink up!;Krjkp."
 
@@ -932,7 +934,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
-	products = list(/obj/item/seeds/ambrosia = 3, /obj/item/seeds/apple = 3, /obj/item/seeds/banana = 3, /obj/item/seeds/berry = 3,
+	products = list(/obj/item/seeds/ambrosia = 3, /obj/item/seeds/apple = 3, /obj/item/seeds/banana = 3, /obj/item/seeds/buttseed = 2, /obj/item/seeds/berry = 3,
 						/obj/item/seeds/cabbage = 3, /obj/item/seeds/carrot = 3, /obj/item/seeds/cherry = 3, /obj/item/seeds/chanter = 3,
 						/obj/item/seeds/chili = 3, /obj/item/seeds/cocoapod = 3, /obj/item/seeds/coffee = 3, /obj/item/seeds/corn = 3,
 						/obj/item/seeds/eggplant = 3, /obj/item/seeds/grape = 3, /obj/item/seeds/grass = 3, /obj/item/seeds/lemon = 3,
@@ -1003,7 +1005,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
         			/obj/item/clothing/ears/headphones = 2,
         			/obj/item/clothing/head/wig/random = 3)
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1, /obj/item/clothing/head/powdered_wig = 1, /obj/item/gun/magic/wand = 2, /obj/item/clothing/glasses/sunglasses/garb = 2, /obj/item/clothing/glasses/sunglasses/blindfold = 1, /obj/item/clothing/mask/muzzle = 2)
-	premium = list(/obj/item/clothing/suit/pirate/captain = 2, /obj/item/clothing/head/pirate/captain = 2, /obj/item/clothing/head/helmet/roman = 1, /obj/item/clothing/head/helmet/roman/legionaire = 1, /obj/item/clothing/under/roman = 1, /obj/item/clothing/shoes/roman = 1, /obj/item/shield/riot/roman = 1, /obj/item/skub = 1)
+	premium = list(/obj/item/clothing/suit/pirate/captain = 2, /obj/item/clothing/head/pirate/captain = 2, /obj/item/clothing/head/helmet/roman = 1, /obj/item/clothing/head/helmet/roman/legionaire = 1, /obj/item/clothing/under/roman = 1, /obj/item/clothing/shoes/roman = 1, /obj/item/shield/riot/roman = 1, /obj/item/skub = 1, /obj/item/clothing/mask/cluwne/happy_cluwne = 1)
 	refill_canister = /obj/item/vending_refill/autodrobe
 
 /obj/machinery/vending/dinnerware

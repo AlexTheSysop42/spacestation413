@@ -243,6 +243,15 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	surplus = 25
 	include_modes = list(/datum/game_mode/nuclear)
 
+/datum/uplink_item/dangerous/ahab_tesla
+	name = "Ahab's Crosshairs"
+	desc = "A powerful tesla rifle styled after a legendary harpoon gun from a certain webcomic. \
+			Exterminates angels with the power of science!"
+	item = /obj/item/gun/energy/ahab_tesla
+	cost = 12
+	surplus = 0
+	include_modes = list(/datum/game_mode/nuclear)
+
 /datum/uplink_item/dangerous/bolt_action
 	name = "Surplus Rifle"
 	desc = "A horribly outdated bolt action weapon. You've got to be desperate to use this."
@@ -262,6 +271,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 12
 	surplus = 50
 	exclude_modes = list(/datum/game_mode/nuclear)
+
+/datum/uplink_item/dangerous/butterfly
+	name = "Energy Butterfly Knife"
+	desc = "A highly lethal and concealable knife that causes critical backstab damage when used with harm intent."
+	cost = 12//80 backstab damage and armour pierce isn't a fucking joke
+	item = /obj/item/melee/transforming/butterfly/energy
+	surplus = 15
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
@@ -368,7 +384,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 12
 	surplus = 35
 	include_modes = list(/datum/game_mode/nuclear)
-	
+
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
@@ -377,7 +393,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 18
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear)
-	player_minimum = 18 //not 15 because this is basically WMD
+	player_minimum = 10 //not 15 because this is basically WMD
 
 // Ammunition
 /datum/uplink_item/ammo
@@ -1267,6 +1283,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	surplus = 20
 	restricted_roles = list("Janitor")
 
+
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1285,6 +1302,14 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/pneumatic_cannon/pie/selfcharge
 	restricted_roles = list("Clown")
 	surplus = 0 //No fun unless you're the clown!
+
+/datum/uplink_item/role_restricted/true_warhammer
+	name = "True Warhammer of Zillyhoo"
+	desc = "Unlike its replica counterparts, repeated exposure to this precious artifact of the Honkmother causes one to become quite silly indeed..."
+	cost = 6
+	item = /obj/item/zillyhoo_hammer/retardhammer
+	restricted_roles = list("Clown")
+	surplus = 0
 
 /datum/uplink_item/role_restricted/ancient_jumpsuit
 	name = "Ancient Jumpsuit"
@@ -1407,6 +1432,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 	SSblackbox.record_feedback("nested tally", "traitor_uplink_items_bought", 1, list("[initial(name)]", "[cost]"))
 	return C
+
+/datum/uplink_item/badass/tab
+	name = "Can of TaB"
+	desc = "A can of TaB, stolen from a Nanotrasen Cache of the stuff."
+	item = /obj/item/reagent_containers/food/drinks/soda_cans/tab
+	cost = 1
+	cant_discount = TRUE
 
 /datum/uplink_item/badass/random
 	name = "Random Item"

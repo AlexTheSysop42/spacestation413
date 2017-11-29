@@ -8,6 +8,27 @@ GAS ANALYZER
 MASS SPECTROMETER
 
 */
+
+/obj/item/device/credit_score
+	name = "\improper Credit Score"
+	icon_state = "signaller"
+	item_state = "signaler"
+	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	icon = 'icons/obj/assemblies/new_assemblies.dmi'
+	desc = "A handy little doodad that displays your current credit score. \
+	It's usually somewhere between 450 and 850."
+	w_class = WEIGHT_CLASS_TINY
+	item_state = "electronic"
+	materials = list(MAT_METAL=50)
+	origin_tech = "magnets=1;engineering=1"
+
+/obj/item/device/credit_score/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>Your current credit score is valued at: 720.</span>")
+
+
+
+
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
 	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."

@@ -871,6 +871,7 @@
 	.["Make alien"] = "?_src_=vars;[HrefToken()];makealien=[REF(src)]"
 	.["Make slime"] = "?_src_=vars;[HrefToken()];makeslime=[REF(src)]"
 	.["Toggle Purrbation"] = "?_src_=vars;[HrefToken()];purrbation=[REF(src)]"
+	.["Make Cluwne"] = "?_src_=vars;[HrefToken()];cluwneing=[REF(src)]"
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
 	if((target != pulling) || (grab_state < GRAB_AGGRESSIVE) || (user != target) || !isliving(user) || stat || user.stat)//Get consent first :^)

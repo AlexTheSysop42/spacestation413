@@ -179,3 +179,5 @@
 		if(dna && dna.species && dna.species.mutanttail)
 			tail = new dna.species.mutanttail
 			tail.Insert(src)
+
+	regeneratebutt()

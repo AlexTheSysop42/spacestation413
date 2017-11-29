@@ -130,6 +130,10 @@
 	spell_type = /obj/effect/proc_holder/spell/aoe_turf/repulse
 	category = "Defensive"
 
+/datum/spellbook_entry/cluwnecurse
+	name = "Cluwne Curse"
+	spell_type = /obj/effect/proc_holder/spell/targeted/cluwnecurse
+
 /datum/spellbook_entry/lightningPacket
 	name = "Lightning bolt!  Lightning bolt!"
 	spell_type = /obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket
