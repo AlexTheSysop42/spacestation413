@@ -454,6 +454,15 @@ other types of metals and chemistry for reagents).
 	materials = list(MAT_METAL = 1000, MAT_GLASS = 400)
 	build_path = /obj/item/storage/bag/plants/portaseeder
 	category = list("Equipment")
+	
+/datum/design/randomseeds
+	name = "Synthetic Strange Seeds"
+	desc = "Somehow, metal (and a hint of uranium) can be used to synthesize seeds. Results may vary."
+	build_type = PROTOLATHE
+	req_tech = list("biotech" = 7, "engineering" = 6, "materials" = 6)
+	materials = list(MAT_METAL = 1000, MAT_URANIUM = 20)
+	build_path = /obj/item/seeds/random
+	category = list("Equipment")
 
 /datum/design/air_horn
 	name = "Air Horn"
