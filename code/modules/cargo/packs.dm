@@ -1172,11 +1172,16 @@
 					/obj/item/seeds/random,
 					/obj/item/seeds/random)
 	crate_name = "exotic seeds crate"
-	
+
 /datum/supply_pack/organic/hydroponics/strangeseeds
 	name = "Strange Seeds Crate"
 	cost = 2000
 	contains = list(/obj/item/seeds/random,
+					/obj/item/seeds/random,
+					/obj/item/seeds/random,
+					/obj/item/seeds/random,
+					/obj/item/seeds/random,
+					/obj/item/seeds/random,
 					/obj/item/seeds/random,
 					/obj/item/seeds/random,
 					/obj/item/seeds/random,
