@@ -122,7 +122,11 @@
 #define NOSTOMACH		28
 #define NO_DNA_COPY     29
 #define DRINKSBLOOD		30
-#define TROLLHORNS		31
+#define SPECIES_ORGANIC 31
+#define SPECIES_INORGANIC 32
+#define SPECIES_UNDEAD  33
+#define SPECIES_ROBOTIC 34
+#define TROLLHORNS 50
 
 #define ORGAN_SLOT_BRAIN "brain"
 #define ORGAN_SLOT_BUTT "butt"

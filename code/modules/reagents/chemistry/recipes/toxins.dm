@@ -107,23 +107,3 @@
 	id = "anacea"
 	results = list("anacea" = 3)
 	required_reagents = list("haloperidol" = 1, "impedrezene" = 1, "radium" = 1)
-
-/datum/chemical_reaction/gusherblack
-	name = "Bodacious Black Liquid Sorrow Gusher Juice"
-	id = "gusherblack"
-	results = list("gusherblack" = 2)
-	required_reagents = list("oil" = 1, "gusherphlegm" = 1)
-	mix_message = "<span class='danger'>Another crocker nightmare rears it's ugly head.</span>"
-
-/datum/chemical_reaction/gushercitrus
-	name = "Carnivorous Citrus Piss Gusher Juice"
-	id = "gushercitrus"
-	results = list("gushercitrus" = 1)
-	required_reagents = list("gusherdiabetic" = 1, "lemon_lime" = 1)
-
-/datum/chemical_reaction/gusherkiwi
-	name = "Xtreme Kiwi Xplosion Gusher Juice"
-	id = "gusherkiwi"
-	results = list("gusherkiwi" = 1)
-	required_reagents = list("gusherblack" = 2, "gushercitrus" = 2, "gusherdiabetic" = 1)
-	required_temp = 600

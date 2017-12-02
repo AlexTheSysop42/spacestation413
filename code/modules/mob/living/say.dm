@@ -75,6 +75,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	var/static/list/one_character_prefix = list(MODE_HEADSET = TRUE, MODE_ROBOT = TRUE, MODE_WHISPER = TRUE)
 
+
 	if(sanitize)
 		message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(!message || message == "")
@@ -104,6 +105,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(stat == DEAD)
 		say_dead(original_message)
 		return
+
+	//VENTRILOQUISM DUMMY CODE
+	var/obj/item/held = get_active_held_item()
+	if (istype(held, /obj/item/vent_dummy))
+		held.say(message)
+		return	//intercept users speech because we want the dummy to say it
 
 	if(check_emote(original_message) || !can_speak_basic(original_message, ignore_spam))
 		return

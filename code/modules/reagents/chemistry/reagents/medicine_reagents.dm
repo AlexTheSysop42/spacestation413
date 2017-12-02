@@ -1098,20 +1098,3 @@
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
-
-/datum/reagent/medicine/gusherphlegm
-	name = "Hellacious Blue Phlegm Aneurysm Gusher Juice"
-	id = "gusherphlegm"
-	description = "C O N S U M E."
-	reagent_state = LIQUID
-	color = "#008ED2" //rgb: 000, 142, 210
-	metabolization_rate = 1
-	taste_description = "rotten fruit"
-
-/datum/reagent/medicine/gusherphlegm/on_mob_life(mob/living/M)
-	M.adjustBruteLoss(-3*REM, 0)
-	M.adjustFireLoss(-3*REM, 0)
-	M.adjustOxyLoss(-3*REM, 0)
-	M.adjustToxLoss(-3*REM, 0)
-	. = 1
-	..()

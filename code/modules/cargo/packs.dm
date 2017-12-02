@@ -937,15 +937,6 @@
 	crate_type = /obj/structure/closet/crate/secure/science
 	dangerous = TRUE
 
-
-/datum/supply_pack/science/research
-	name = "Machine Prototype Crate"
-	cost = 8000
-	access = ACCESS_RESEARCH
-	contains = list(/obj/item/device/machineprototype)
-	crate_name = "machine prototype crate"
-	crate_type = /obj/structure/closet/crate/secure/science
-
 /datum/supply_pack/science/tablets
 	name = "Tablet Crate"
 	cost = 5000
@@ -1229,35 +1220,6 @@
 					/obj/item/vending_refill/cigarette,
 					/obj/item/vending_refill/cigarette)
 	crate_name = "cigarette supply crate"
-
-/datum/supply_pack/organic/gushers
-	name = "C O N S U M E"
-	cost = 10000
-	contraband = TRUE
-	contains = list(/obj/item/reagent_containers/food/snacks/gushers,
-					/obj/item/reagent_containers/food/snacks/gushers,
-					/obj/item/reagent_containers/food/snacks/gushers,
-					/obj/item/reagent_containers/food/snacks/gushersphlegm,
-					/obj/item/reagent_containers/food/snacks/gushersphlegm,
-					/obj/item/reagent_containers/food/snacks/gushersphlegm,
-					/obj/item/reagent_containers/food/snacks/gushersblack,
-					/obj/item/reagent_containers/food/snacks/gushersblack,
-					/obj/item/reagent_containers/food/snacks/gushersblack,
-					/obj/item/reagent_containers/food/snacks/gushersdiabetic,
-					/obj/item/reagent_containers/food/snacks/gushersdiabetic,
-					/obj/item/reagent_containers/food/snacks/gushersdiabetic,
-					/obj/item/reagent_containers/food/snacks/gusherscherry,
-					/obj/item/reagent_containers/food/snacks/gusherscherry,
-					/obj/item/reagent_containers/food/snacks/gusherscherry,
-					/obj/item/reagent_containers/food/snacks/gusherscitrus,
-					/obj/item/reagent_containers/food/snacks/gusherscitrus,
-					/obj/item/reagent_containers/food/snacks/gusherscitrus,
-					/obj/item/reagent_containers/food/snacks/gusherskiwi,
-					/obj/item/reagent_containers/food/snacks/gusherskiwi,
-					/obj/item/reagent_containers/food/snacks/gusherskiwi,
-					/obj/item/reagent_containers/food/snacks/gushersstrawberry,
-					/obj/item/reagent_containers/food/snacks/gushersstrawberry,
-					/obj/item/reagent_containers/food/snacks/gushersstrawberry)
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials ///////////////////////////////////////
@@ -1625,7 +1587,7 @@
 					/obj/item/device/instrument/trombone,
 					/obj/item/device/instrument/recorder,
 					/obj/item/device/instrument/harmonica,
-					/obj/structure/piano)
+					/obj/structure/piano/unanchored)
 	name = "Big band instrument collection"
 	cost = 5000
 	crate_name = "Big band musical instruments collection"

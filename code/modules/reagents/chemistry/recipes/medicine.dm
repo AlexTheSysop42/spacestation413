@@ -226,9 +226,3 @@
 	id = "corazone"
 	results = list("corazone" = 3)
 	required_reagents = list("phenol" = 2, "lithium" = 1)
-
-/datum/chemical_reaction/gusherphlegm
-	name = "Hellacious Blue Phlegm Aneurysm Gusher Juice"
-	id = "gusherphlegm"
-	results = list("gusherphlegm" = 2)
-	required_reagents = list("gusher" = 1, "tricordrazine" = 1)
