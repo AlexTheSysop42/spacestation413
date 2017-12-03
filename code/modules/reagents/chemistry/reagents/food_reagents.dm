@@ -662,23 +662,3 @@
 		M.adjustFireLoss(-1*REM, 0)
 		. = TRUE
 	..()
-
-/datum/reagent/consumable/gusher
-	name = "Massive Tropical Brain Hemorrhage Gusher Juice"
-	id = "gusher"
-	description = "C O N S U M E"
-	metabolization_rate = 1
-	reagent_state = LIQUID
-	nutriment_factor = 3 * REAGENTS_METABOLISM
-	color = "#F3AF33" // rgb: 243, 175, 051
-	taste_description = "tropical punch"
-	
-/datum/reagent/consumable/gusherdiabetic
-	name = "Jammin Sour Diabetic Coma Gusher Juice"
-	id = "gusherdiabetic"
-	description = "C O N S U M E"
-	reagent_state = LIQUID
-	metabolization_rate = 1
-	nutriment_factor = 3 * REAGENTS_METABOLISM
-	color = "#EAEAEA" //rgb: 234, 234, 234
-	taste_description = "sugar and a severe lack of insulin"
