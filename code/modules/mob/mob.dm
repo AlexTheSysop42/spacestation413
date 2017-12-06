@@ -41,9 +41,14 @@
 /atom/proc/prepare_huds()
 	hud_list = list()
 	for(var/hud in hud_possible)
-		var/image/I = image('icons/mob/hud.dmi', src, "")
-		I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
-		hud_list[hud] = I
+		var/hint = hud_possible[hud]
+		switch(hint)
+			if(HUD_LIST_LIST)
+				hud_list[hud] = list()
+			else
+				var/image/I = image('icons/mob/hud.dmi', src, "")
+				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+				hud_list[hud] = I
 
 /mob/proc/Cell()
 	set category = "Admin"
@@ -173,6 +178,15 @@
 
 /mob/proc/get_item_by_slot(slot_id)
 	return null
+
+/mob/proc/handle_alpha()
+	if(alphas.len < 1)
+		alpha = 255
+	else
+		var/lowest_alpha = 255
+		for(var/alpha_modification in alphas)
+			lowest_alpha = min(lowest_alpha,alphas[alpha_modification])
+		alpha = lowest_alpha
 
 /mob/proc/restrained(ignore_grab)
 	return
@@ -418,18 +432,6 @@
 	if(I)
 		I.attack_self(src)
 		update_inv_hands()
-
-
-/*
-/mob/verb/dump_source()
-
-	var/master = "<PRE>"
-	for(var/t in typesof(/area))
-		master += text("[]\n", t)
-		//Foreach goto(26)
-	src << browse(master)
-	return
-*/
 
 /mob/verb/memory()
 	set name = "Notes"

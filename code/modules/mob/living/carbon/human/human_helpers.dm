@@ -39,6 +39,8 @@
 /mob/living/carbon/human/get_visible_name()
 	var/face_name = get_face_name("")
 	var/id_name = get_id_name("")
+	if(mind && mind.vampire && (VAMP_SHADOW in mind.vampire.powers) && mind.vampire.ismenacing)
+		return "Unknown"
 	if(name_override)
 		return name_override
 	if(face_name)

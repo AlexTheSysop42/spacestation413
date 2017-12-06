@@ -195,3 +195,6 @@ Temporary Items
 
 #Visual studio stuff
 *.vscode/*
+
+#GitHub Atom
+.atom-build.json

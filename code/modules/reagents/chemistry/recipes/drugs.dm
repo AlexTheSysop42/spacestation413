@@ -40,15 +40,3 @@
 	id = "aranesp"
 	results = list("aranesp" = 3)
 	required_reagents = list("epinephrine" = 1, "atropine" = 1, "morphine" = 1)
-
-/datum/chemical_reaction/gushercherry
-	name = "Wild Cherry Apeshit Apocalypse Gusher Juice"
-	id = "gushercherry"
-	results = list("gushercherry" = 2)
-	required_reagents = list("cherryjelly" = 1, "gusher" = 1)
-
-/datum/chemical_reaction/gusherstrawberry
-	name = "Schizophrenic Strawberry Slam Gusher Juice"
-	id = "gusherstrawberry"
-	results = list("gusherstrawberry" = 2)
-	required_reagents = list("gusher" = 1, "space_drugs" = 1)

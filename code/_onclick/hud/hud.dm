@@ -15,6 +15,7 @@
 
 	var/obj/screen/ling/chems/lingchemdisplay
 	var/obj/screen/ling/sting/lingstingdisplay
+	var/obj/screen/vampire/vampire_blood_display // /vg/
 
 	var/obj/screen/blobpwrdisplay
 
@@ -112,6 +113,7 @@
 	alien_plasma_display = null
 	alien_queen_finder = null
 	nightvisionicon = null
+	vampire_blood_display = null
 
 	if(plane_masters.len)
 		for(var/thing in plane_masters)

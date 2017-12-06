@@ -7,6 +7,15 @@
 	tastes = list("bun" = 4)
 	foodtype = GRAIN | MEAT
 
+/obj/item/reagent_containers/food/snacks/burger/assburger
+	name = "assburger"
+	desc = "What the hell, that's not domesticated donkey meat, it's a literal buttburger!"
+	tastes = list("butt" = 4)
+	foodtype = MEAT | GRAIN | GROSS
+	bonus_reagents = list("fartium" = 10, "nutriment" = 2)
+	icon = 'icons/obj/food/burgerbread2.dmi'
+	icon_state = "assburger"
+
 /obj/item/reagent_containers/food/snacks/burger/plain
 	name = "burger"
 	desc = "The cornerstone of every nutritious breakfast."
@@ -176,7 +185,7 @@
 	color = "#DA00FFFF"
 	bonus_reagents = list("purplecrayonpowder" = 10, "vitamin" = 5)
 	foodtype = GRAIN | MEAT
-	
+
 /obj/item/reagent_containers/food/snacks/burger/black
 	name = "black burger"
 	desc = "This is overcooked."
@@ -184,7 +193,7 @@
 	color = "#1C1C1C"
 	bonus_reagents = list("blackcrayonpowder" = 10, "vitamin" = 5)
 	foodtype = GRAIN | MEAT
-	
+
 /obj/item/reagent_containers/food/snacks/burger/white
 	name = "white burger"
 	desc = "Delicous Titanium!"

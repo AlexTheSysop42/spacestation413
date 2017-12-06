@@ -31,7 +31,7 @@
 			/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
 			/obj/item/stack/sheet/bluespace_crystal = list("bluespace" = 20),
 			/obj/item/stack/cable_coil = list ("copper" = 5),
-			/obj/item/ore/bluespace_crystal = list("bluespace" = 20),
+			/obj/item/stack/ore/bluespace_crystal = list("bluespace" = 20),
 			/obj/item/grown/nettle/basic = list("sacid" = 0),
 			/obj/item/grown/nettle/death = list("facid" = 0, "sacid" = 0),
 			/obj/item/grown/novaflower = list("capsaicin" = 0, "condensedcapsaicin" = 0),
@@ -47,15 +47,6 @@
 			/obj/item/reagent_containers/food/snacks/grown/bluecherries = list("bluecherryjelly" = 0),
 			/obj/item/reagent_containers/food/snacks/egg = list("eggyolk" = -5),
 			/obj/item/reagent_containers/food/snacks/deadmouse = list ("blood" = 20, "gibs" = 5), // You monster
-			/obj/item/reagent_containers/food/snacks/gushers = list("gusher" = 20),
-			/obj/item/reagent_containers/food/snacks/gushersphlegm = list("gusherphlegm" = 20),
-			/obj/item/reagent_containers/food/snacks/gushersblack = list("gusherblack" = 20),
-			/obj/item/reagent_containers/food/snacks/gusherssyndie = list("gushersyndie" = 20),
-			/obj/item/reagent_containers/food/snacks/gushersdiabetic = list("gusherdiabetic" = 20),
-			/obj/item/reagent_containers/food/snacks/gusherscherry = list("gushercherry" = 20),
-			/obj/item/reagent_containers/food/snacks/gusherscitrus = list("gushercitrus" = 20),
-			/obj/item/reagent_containers/food/snacks/gusherskiwi = list("gusherkiwi" = 20),
-			/obj/item/reagent_containers/food/snacks/gushersstrawberry = list("gusherstrawberry" = 20),
 			//Grinder stuff, but only if dry
 			/obj/item/reagent_containers/food/snacks/grown/coffee/robusta = list("coffeepowder" = 0, "morphine" = 0),
 			/obj/item/reagent_containers/food/snacks/grown/coffee = list("coffeepowder" = 0),
@@ -107,7 +98,9 @@
 			/obj/item/reagent_containers/food/snacks/grown/blumpkin = list("blumpkinjuice" = 0),
 			/obj/item/reagent_containers/food/snacks/grown/apple = list("applejuice" = 0),
 			/obj/item/reagent_containers/food/snacks/grown/grapes = list("grapejuice" = 0),
-			/obj/item/reagent_containers/food/snacks/grown/grapes/green = list("grapejuice" = 0))
+			/obj/item/reagent_containers/food/snacks/grown/grapes/green = list("grapejuice" = 0),
+			/obj/item/organ/butt = list("fartium" = 20),
+			/obj/item/storage/book/bible = list("holywater" = 100))
 
 	var/static/list/dried_items = list(
 			//Grinder stuff, but only if dry,
@@ -270,7 +263,7 @@
 
 	var/datum/browser/popup = new(user, "reagentgrinder", "All-In-One Grinder")
 	popup.set_content(dat)
-	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
+	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
 	popup.open(1)
 	return
 

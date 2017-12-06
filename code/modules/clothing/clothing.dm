@@ -333,3 +333,6 @@ BLIND     // can't see anything
 		deconstruct(FALSE)
 	else
 		..()
+
+/obj/item
+	var/list/alternate_screams = list()

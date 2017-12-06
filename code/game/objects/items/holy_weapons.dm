@@ -17,6 +17,18 @@
 	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
+/obj/item/nullrod/attack(mob/M as mob, mob/living/user as mob)
+	if(ishuman(M)) //Typecasting, only humans can be vampires
+		var/mob/living/carbon/human/H = M
+
+		if(isvampire(H) && user.mind && (user.mind.assigned_role == "Chaplain")) //Fuck up vampires by smiting the shit out of them. Shock and Awe!
+			if(!(VAMP_MATURE in H.mind.vampire.powers))
+				to_chat(H, "<span class='warning'>\The [src]'s power violently interferes with your own!</span>")
+				if(H.mind.vampire.nullified < 5) //Don't actually reduce their debuff if it's over 5
+					H.mind.vampire.nullified = max(5, H.mind.vampire.nullified + 2)
+				H.mind.vampire.smitecounter += 30 //Smite the shit out of him. Four strikes and he's out
+	..()
+
 /obj/item/nullrod/attack_self(mob/user)
 	if(user.mind && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
@@ -297,7 +309,7 @@
 	hitsound = 'sound/items/bikehorn.ogg'
 	sharpness = IS_SHARP
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	
+
 /obj/item/nullrod/pride_hammer
 	icon_state = "pride"
 	name = "Pride-struck Hammer"
@@ -308,7 +320,7 @@
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
 	hitsound = 'sound/weapons/blade1.ogg'
-	
+
 /obj/item/nullrod/pride_hammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
 	if(!proximity)
 		return

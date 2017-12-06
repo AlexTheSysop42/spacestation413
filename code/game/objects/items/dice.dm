@@ -6,7 +6,7 @@
 
 /obj/item/storage/pill_bottle/dice/New()
 	..()
-	var/special_die = pick("1","2","fudge","space","00","8bd20","4dd6","100")
+	var/special_die = pick("1","2","fudge","space","00","8bd20","4dd6","100","fluorite/one_use")
 	if(special_die == "1")
 		new /obj/item/dice/d1(src)
 	if(special_die == "2")
@@ -143,6 +143,113 @@
 
 /obj/item/dice/fourdd6/update_icon()
 	return
+
+//Begins edited code.
+var/reusable = 1
+var/used = 0
+
+/obj/item/dice/fluorite
+	name = "Fluorite Octet"
+	desc = "Rolling the dice will execute a wide range of highly unpredictable effects." //Spider8itch, ::::)
+	icon_state = "fluorite"
+	sides = 8
+	can_be_rigged = FALSE
+	var/reusable = 1
+	var/used = 0
+
+
+/obj/item/dice/fluorite/one_use
+	reusable = 0
+
+/obj/item/dice/fluorite/diceroll(mob/user)
+	..()
+	if(!used)
+		if(!ishuman(user) || !user.mind || (user.mind in SSticker.mode.wizards))
+			to_chat(user, "<span class='warning'>You feel the magic of the dice is restricted to ordinary humans!</span>")
+			return
+		if(rigged)
+			eff3ct(user,rigged)
+		else
+			eff3ct(user,result)
+//Most stuff here is just copypasted from the die of fate, for simplicity.
+
+//Here begin the shenanigans
+
+/obj/item/dice/proc/eff3ct(var/mob/living/carbon/human/user,roll)
+	if(!reusable)
+		used = 1
+	visible_message("<span class='userdanger'>The fluorite octet glows magically!</span>")
+	switch(roll)
+		if(1)
+			//Death
+			user.death()
+			playsound(src,'sound/hallucinations/wail.ogg', 40,1)
+		if(2)
+			//Swarm of creatures
+			for(var/direction in GLOB.alldirs)
+				var/turf/T = get_turf(src)
+				new /mob/living/simple_animal/hostile/creature(get_step(T,direction))
+				playsound(src,'sound/magic/castsummon.ogg', 40,1)
+		if(3)
+			//Destroy Equipment
+			for (var/obj/item/B in user)
+				if (istype(B, /obj/item/implant))
+					continue
+				qdel(B)
+		if(4)
+			//Fueltank Explosion
+			explosion(src.loc,-1,0,2, flame_range = 2)
+		if(5)
+			//Healing
+			user.revive(full_heal = 1, admin_revive = 1)
+		if(6)
+			//Deadly firearms
+			new /obj/item/gun/ballistic/revolver(get_turf(src))
+		if(7)
+			for(var/direction in GLOB.alldirs)
+				var/turf/P = get_turf(src)
+				new /mob/living/simple_animal/hostile/carp/ranged/chaos(get_step(P,direction))
+				playsound(src,'sound/effects/clockcult_gateway_active.ogg', 40,1)
+		if(8)
+			//BR8K
+			new /obj/item/card/id/captains_spare(get_turf(src))
+			new /obj/mecha/combat/gygax/dark(get_turf(src))
+			playsound(src,'sound/effects/clockcult_gateway_active.ogg', 40,1)
+
+
+/mob/living/simple_animal/hostile/carp/ranged
+	name = "m8gicarp"
+	desc = "50% sp8der, 50% fish, 100% horrible."
+	icon_state = "magicarp"
+	icon_living = "magicarp"
+	icon_dead = "magicarp_dead"
+	icon_gib = "magicarp_gib"
+	ranged = 1
+	retreat_distance = 2
+	minimum_distance = 0 //Between shots they can and will close in to nash
+	projectiletype = /obj/item/projectile/magic
+	projectilesound = 'sound/weapons/emitter.ogg'
+	maxHealth = 50
+	health = 50
+	var/allowed_projectile_types2 = list(/obj/item/projectile/magic/change, /obj/item/projectile/magic/animate, /obj/item/projectile/magic/resurrection,
+	/obj/item/projectile/magic/death, /obj/item/projectile/magic/teleport, /obj/item/projectile/magic/door, /obj/item/projectile/magic/aoe/fireball,
+	/obj/item/projectile/magic/spellblade, /obj/item/projectile/magic/arcane_barrage)
+
+/mob/living/simple_animal/hostile/carp/ranged/Initialize()
+	projectiletype = pick(allowed_projectile_types2)
+	. = ..()
+
+/mob/living/simple_animal/hostile/carp/ranged/chaos
+	name = "chaos magicarp"
+	desc = "50% carp, 100% magic, 150% horrible."
+	color = "#00FFFF"
+	maxHealth = 75
+	health = 75
+
+
+//End of the edited code. ::::)
+
+
 
 /obj/item/dice/attack_self(mob/user)
 	diceroll(user)

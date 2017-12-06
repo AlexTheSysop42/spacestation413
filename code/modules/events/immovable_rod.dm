@@ -68,6 +68,12 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/ex_act(severity, target)
 	return 0
 
+/obj/effect/immovablerod/singularity_act()
+	return
+
+/obj/effect/immovablerod/singularity_pull()
+	return
+
 /obj/effect/immovablerod/Collide(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
@@ -100,3 +106,13 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		H.adjustBruteLoss(160)
 	if(L && (L.density || prob(10)))
 		L.ex_act(EXPLODE_HEAVY)
+
+/obj/effect/immovablerod/butt
+	name = "enormous ass"
+	desc = "godDAMN that ass is well rounded"
+	icon = 'icons/obj/butts.dmi'
+	icon_state = "butt"
+
+/obj/effect/immovablerod/butt/Initialize()
+	. = ..()
+	SpinAnimation(24,-1)

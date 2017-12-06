@@ -26,6 +26,17 @@
 	result = /obj/item/reagent_containers/food/snacks/burger/plain
 	subcategory = CAT_BURGER
 
+/datum/crafting_recipe/food/assburger
+	name = "Assburger"
+	reqs = list(
+			/obj/item/reagent_containers/food/snacks/meat/steak/plain = 1,
+			/obj/item/reagent_containers/food/snacks/bun = 1,
+			/obj/item/organ/butt = 1
+	)
+
+	result = /obj/item/reagent_containers/food/snacks/burger/assburger
+	subcategory = CAT_BURGER
+
 /datum/crafting_recipe/food/corgiburger
 	name = "Corgi burger"
 	reqs = list(
@@ -176,7 +187,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/burger/purple
 	subcategory = CAT_BURGER
-	
+
 /datum/crafting_recipe/food/blackburger
 	name = "Black burger"
 	reqs = list(
@@ -186,7 +197,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/burger/black
 	subcategory = CAT_BURGER
-	
+
 /datum/crafting_recipe/food/whiteburger
 	name = "White burger"
 	reqs = list(

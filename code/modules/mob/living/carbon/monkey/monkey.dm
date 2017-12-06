@@ -42,6 +42,7 @@
 	internal_organs += new /obj/item/organ/brain
 	internal_organs += new /obj/item/organ/tongue
 	internal_organs += new /obj/item/organ/eyes
+	internal_organs += new /obj/item/organ/butt
 	internal_organs += new /obj/item/organ/ears
 	internal_organs += new /obj/item/organ/liver
 	internal_organs += new /obj/item/organ/stomach
@@ -62,7 +63,7 @@
 
 	if (bodytemperature < 283.222)
 		. += (283.222 - bodytemperature) / 10 * 1.75
-		
+
 	var/static/config_monkey_delay
 	if(isnull(config_monkey_delay))
 		config_monkey_delay = CONFIG_GET(number/monkey_delay)

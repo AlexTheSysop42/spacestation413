@@ -43,6 +43,9 @@
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
+	if(mind && mind.vampire)
+		handle_vampire()
+
 	dna.species.spec_life(src) // for mutantraces
 
 	if(stat != DEAD)
@@ -121,6 +124,8 @@
 ///FIRE CODE
 /mob/living/carbon/human/handle_fire()
 	..()
+	if(mind && mind.vampire && stat == DEAD)
+		dust()
 	if(dna)
 		dna.species.handle_fire(src)
 

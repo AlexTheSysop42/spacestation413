@@ -49,3 +49,13 @@
 
 	var/icon_render_key = ""
 	var/static/list/limb_icon_cache = list()
+
+
+	var/list/body_alphas = list()	//Alpha values applied to just the body sprite of humans/monkeys, rather than their whole icon
+
+	//halucination vars
+	var/image/halimage
+	var/image/halbody
+	var/obj/halitem
+	var/hal_screwyhud = SCREWYHUD_NONE
+	var/next_hallucination = 0

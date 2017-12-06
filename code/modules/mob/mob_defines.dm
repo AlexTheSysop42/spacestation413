@@ -102,15 +102,14 @@
 	var/list/faction = list("neutral") //A list of factions that this mob is currently in, for hostile mob targetting, amongst other things
 	var/move_on_shuttle = 1 // Can move on the shuttle.
 
+	var/list/alphas = list()
+
 //The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant = null
 
 	var/list/obj/user_movement_hooks	//Passes movement in client/Move() to these!
 
 	var/list/mob_spell_list = list() //construct spells and mime spells. Spells that do not transfer from one mob to another and can not be lost in mindswap.
-
-//Changlings, but can be used in other modes
-//	var/obj/effect/proc_holder/changpower/list/power_list = list()
 
 //List of active diseases
 

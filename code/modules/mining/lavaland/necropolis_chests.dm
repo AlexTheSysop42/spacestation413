@@ -26,7 +26,7 @@
 		if(6)
 			new /obj/item/reagent_containers/glass/bottle/potion/flight(src)
 		if(7)
-			new /obj/item/pickaxe/diamond(src)
+			new /obj/item/gun/ballistic/shotgun/automatic/dual_tube(src)
 		if(8)
 			if(prob(50))
 				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
@@ -75,6 +75,8 @@
 		if(27)
 			new /obj/item/borg/upgrade/modkit/lifesteal(src)
 			new /obj/item/bedsheet/cult(src)
+		if(28)
+			new /obj/item/clothing/mask/stone(src)
 
 
 //KA modkit design discs
@@ -105,9 +107,9 @@
 	modkit_design = /datum/design/unique_modkit/bounty
 
 /datum/design/unique_modkit
-	category = list("Mining Designs", "Cyborg Upgrade Modules")
-	req_tech = list("materials" = 12) //can't be normally obtained
+	category = list("Mining Designs", "Cyborg Upgrade Modules") //can't be normally obtained
 	build_type = PROTOLATHE | MECHFAB
+	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/unique_modkit/offensive_turf_aoe
 	name = "Kinetic Accelerator Offensive Mining Explosion Mod"
@@ -366,7 +368,7 @@
 	return
 
 /obj/effect/immortality_talisman/singularity_pull()
-	return 0
+	return
 
 /obj/effect/immortality_talisman/Destroy(force)
 	if(!can_destroy && !force)
@@ -579,17 +581,18 @@
 	var/ladder_x = T.x
 	var/ladder_y = T.y
 	to_chat(user, "<span class='notice'>You unfold the ladder. It extends much farther than you were expecting.</span>")
+	var/last_ladder = null
 	for(var/i in 1 to world.maxz)
-		if(i == ZLEVEL_CENTCOM || i == ZLEVEL_TRANSIT)
+		if(i == ZLEVEL_CENTCOM || i == ZLEVEL_TRANSIT || i == ZLEVEL_CITYOFCOGS)
 			continue
 		var/turf/T2 = locate(ladder_x, ladder_y, i)
-		new /obj/structure/ladder/unbreakable/jacob(T2)
+		last_ladder = new /obj/structure/ladder/unbreakable/jacob(T2, null, last_ladder)
 	qdel(src)
 
+// Inherit from unbreakable but don't set ID, to suppress the default Z linkage
 /obj/structure/ladder/unbreakable/jacob
 	name = "jacob's ladder"
 	desc = "An indestructible celestial ladder that violates the laws of physics."
-	auto_connect = TRUE
 
 ///Bosses
 

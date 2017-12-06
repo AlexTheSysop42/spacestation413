@@ -33,6 +33,18 @@
 	var/mob/living/carbon/human/H = usr
 	H.quick_equip()
 
+/obj/screen/vampire
+	invisibility = INVISIBILITY_ABSTRACT
+
+obj/screen/vampire/vampire_blood_display
+	icon = 'icons/mob/screen1_Midnight.dmi'
+	name = "Vampire Blood"
+	icon_state = "dark128"
+	screen_loc = ui_devilsouldisplay
+
+/obj/screen/vampire/vampire_blood_display/proc/clear()
+	invisibility = INVISIBILITY_ABSTRACT
+
 /obj/screen/devil
 	invisibility = INVISIBILITY_ABSTRACT
 
@@ -298,6 +310,9 @@
 	devilsouldisplay = new /obj/screen/devil/soul_counter
 	infodisplay += devilsouldisplay
 
+	vampire_blood_display = new /obj/screen/vampire/vampire_blood_display
+	infodisplay += vampire_blood_display
+
 	zone_select =  new /obj/screen/zone_sel()
 	zone_select.icon = ui_style
 	zone_select.update_icon(mymob)
@@ -308,7 +323,7 @@
 			inv.hud = src
 			inv_slots[inv.slot_id] = inv
 			inv.update_icon()
-	
+
 	update_locked_slots()
 
 /datum/hud/human/update_locked_slots()

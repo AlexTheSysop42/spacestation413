@@ -384,9 +384,10 @@
 			dat += "<BR><span class='userdanger'>[other_players] players in invalid state or the statistics code is bugged!</span>"
 		dat += "<BR>"
 
-		if(SSticker.mode.syndicates.len)
+		var/list/nukeops = get_antagonists(/datum/antagonist/nukeop)
+		if(nukeops.len)
 			dat += "<br><table cellspacing=5><tr><td><B>Syndicates</B></td><td></td></tr>"
-			for(var/datum/mind/N in SSticker.mode.syndicates)
+			for(var/datum/mind/N in nukeops)
 				var/mob/M = N.current
 				if(M)
 					dat += "<tr><td><a href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(M)]'>[M.real_name]</a>[M.client ? "" : " <i>(No Client)</i>"][M.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
@@ -458,6 +459,30 @@
 					dat += "<tr><td><a href='?_src_=vars;[HrefToken()];Vars=[REF(changeling)]'>[changeling.name]([changeling.key])</a><i>Changeling body destroyed!</i></td>"
 					dat += "<td><A href='?priv_msg=[changeling.key]'>PM</A></td></tr>"
 			dat += "</table>"
+
+		if(SSticker.mode.vampires.len > 0)
+			dat += "<br><table cellspacing=5><tr><td><B>Vampires</B></td><td></td><td></td></tr>"
+			for(var/datum/mind/vampire in SSticker.mode.vampires)
+				var/mob/M = vampire.current
+				if(M)
+
+					dat += {"<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>
+						<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>
+						<td><A HREF='?src=\ref[src];traitor=\ref[M]'>Show Objective</A></td></tr>"}
+				else
+					dat += "<tr><td><i>Vampire not found!</i></td></tr>"
+
+		if(SSticker.mode.enthralled.len > 0)
+			dat += "<br><table cellspacing=5><tr><td><B>Thralls</B></td><td></td><td></td></tr>"
+			for(var/datum/mind/Mind in SSticker.mode.enthralled)
+				var/mob/M = Mind.current
+				if(M)
+
+					dat += {"<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>
+						<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>
+						<td><A HREF='?src=\ref[src];traitor=\ref[M]'>Show Objective</A></td></tr>"}
+				else
+					dat += "<tr><td><i>Enthralled not found!</i></td></tr>"
 
 		if(SSticker.mode.wizards.len > 0)
 			dat += "<br><table cellspacing=5><tr><td><B>Wizards</B></td><td></td><td></td></tr>"
@@ -593,6 +618,21 @@
 					dat += "<td><A href='?priv_msg=[sintouched.key]'>PM</A></td>"
 			dat += "</table>"
 
+		if(SSticker.mode.vampires.len)
+			dat += "<br><table cellspacing=5><tr><td><B>vampires</B></td><td></td><td></td></tr>"
+			for(var/X in SSticker.mode.vampires)
+				var/datum/mind/vampire = X
+				var/mob/M = vampire.current
+				if(M)
+					dat += "<tr><td><a href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(M)]'>[M.real_name]</a>[M.client ? "" : " <i>(No Client)</i>"][M.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+					dat += "<td><A href='?priv_msg=[M.ckey]'>PM</A></td>"
+					dat += "<td><A HREF='?_src_=holder;[HrefToken()];traitor=[REF(M)]'>Show Objective</A></td></tr>"
+					dat += "<td><A HREF='?_src_=holder;[HrefToken()];admincheckvampireinfo=[REF(M)]'>Show all vampire info</A></td></tr>"
+				else
+					dat += "<tr><td><a href='?_src_=vars;[HrefToken()];Vars=[REF(vampire)]'>[vampire.name]([vampire.key])</a><i>Vampire body destroyed!</i></td>"
+					dat += "<td><A href='?priv_msg=[vampire.key]'>PM</A></td></tr>"
+			dat += "</table>"
+
 		var/list/blob_minds = list()
 		for(var/mob/camera/blob/B in GLOB.mob_list)
 			blob_minds |= B.mind
@@ -610,7 +650,7 @@
 					dat += "<td><A href='?priv_msg=[blob.key]'>PM</A></td></tr>"
 			dat += "</table>"
 
-		
+
 		var/list/pirates = get_antagonists(/datum/antagonist/pirate)
 		if(pirates.len > 0)
 			dat += "<br><table cellspacing=5><tr><td><B>Pirates</B></td><td></td></tr>"

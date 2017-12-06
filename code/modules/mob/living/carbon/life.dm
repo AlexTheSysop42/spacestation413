@@ -24,6 +24,8 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
+	handle_vampires()
+
 	if(stat != DEAD)
 		return 1
 
@@ -248,7 +250,7 @@
 		if(prob(D.infectivity))
 			D.spread()
 
-		if(stat != DEAD)
+		if(stat != DEAD && !D.process_dead)
 			D.stage_act()
 
 //todo generalize this and move hud out
@@ -262,6 +264,16 @@
 		else
 			hud_used.lingchemdisplay.invisibility = INVISIBILITY_ABSTRACT
 
+
+/mob/living/carbon/proc/handle_vampires()
+	if(mind && hud_used && hud_used.vampire_blood_display)
+		if(mind.vampire)
+			hud_used.vampire_blood_display.invisibility = 0
+			hud_used.vampire_blood_display.maptext_width = world.icon_size*2
+			hud_used.vampire_blood_display.maptext_height = world.icon_size
+			hud_used.vampire_blood_display.maptext = "<div align='left' valign='top' style='position:relative; top:0px; left:6px'>U:<font color='#33FF33'>[mind.vampire.bloodusable]</font><br> T:<font color='#FFFF00'>[mind.vampire.bloodtotal]</font></div>"
+		else
+			hud_used.vampire_blood_display.invisibility = INVISIBILITY_ABSTRACT
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)

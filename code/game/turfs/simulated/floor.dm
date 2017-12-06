@@ -191,6 +191,13 @@
 		else if(prob(50))
 			ReplaceWithLattice()
 
+/turf/open/floor/New()
+	..()
+
+	if(istype(loc, /area/chapel))
+		holy = 1
+	levelupdate()
+
 /turf/open/floor/narsie_act(force, ignore_mobs, probability = 20)
 	. = ..()
 	if(.)

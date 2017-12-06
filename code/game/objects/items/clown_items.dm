@@ -123,7 +123,6 @@
 	name = "air horn"
 	desc = "Damn son, where'd you find this?"
 	icon_state = "air_horn"
-	origin_tech = "materials=4;engineering=4"
 
 /obj/item/bikehorn/airhorn/Initialize()
 	. = ..()
@@ -163,3 +162,14 @@
 	desc = "Just looking at this makes you want to giggle."
 	icon_state = "laughter"
 	list_reagents = list("laughter" = 50)
+
+//faygo
+/obj/item/reagent_containers/food/drinks/faygoredpop
+	name = "Red Pop Faygo"
+	desc = "A sacred elixir, only to be drunk in the most dire of circumstances."
+	icon_state = "faygoredpop"
+	item_state = "faygoredpop"
+	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	list_reagents = list("faygoredpop" = 100)
+	foodtype = SUGAR

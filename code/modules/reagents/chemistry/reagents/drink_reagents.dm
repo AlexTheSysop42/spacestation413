@@ -709,3 +709,21 @@
 	description = "Milk for cool kids."
 	color = "#7D4E29"
 	taste_description = "chocolate milk"
+
+/datum/reagent/consumable/faygoredpop
+	name = "Red Pop Faygo"
+	id = "faygoredpop"
+	description = "A soft drink favored by juggalos."
+	color = "#EA1010"
+	taste_description = "strawberry soda"
+	glass_name = "glass of red pop faygo"
+	glass_desc = "A glass of Red Pop Faygo, favored by juggalos across the universe."
+
+/datum/reagent/consumable/tab
+	name = "TaB"
+	id = "tab"
+	description = "A diet soft drink, manufactured by the Coca-Cola company."
+	color = "#602E00"
+	taste_description = "saccharin"
+	glass_name = "glass of TaB"
+	glass_desc = "A glass of TaB."

@@ -48,7 +48,7 @@
 
 /obj/item/vending_refill/snack
 	machine_name = "Getmore Chocolate Corp"
-	charges = list(12, 6, 0)//of 36 standard, 18 contraband
+	charges = list(14, 2, 0)//of 42 standard, 6 contraband
 	init_charges = list(12, 2, 0)
 
 /obj/item/vending_refill/cola

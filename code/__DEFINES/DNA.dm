@@ -28,6 +28,7 @@
 #define SWEDISH		"Swedish"
 #define CHAV		"Chav"
 #define ELVIS		"Elvis"
+#define CLUWNEMUT	"Cluwne"
 
 #define UI_CHANGED "ui changed"
 #define UE_CHANGED "ue changed"
@@ -121,9 +122,14 @@
 #define NOSTOMACH		28
 #define NO_DNA_COPY     29
 #define DRINKSBLOOD		30
-#define TROLLHORNS		31
+#define SPECIES_ORGANIC 31
+#define SPECIES_INORGANIC 32
+#define SPECIES_UNDEAD  33
+#define SPECIES_ROBOTIC 34
+#define TROLLHORNS 50
 
 #define ORGAN_SLOT_BRAIN "brain"
+#define ORGAN_SLOT_BUTT "butt"
 #define ORGAN_SLOT_APPENDIX "appendix"
 #define ORGAN_SLOT_RIGHT_ARM_AUG "r_arm_device"
 #define ORGAN_SLOT_LEFT_ARM_AUG "l_arm_device"

@@ -269,6 +269,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			animate(pixel_x=rand(min,max), pixel_y=rand(min,max), time=1)
 	animate(pixel_x=oldx, pixel_y=oldy, time=1)
 
+/proc/check_holy(var/mob/A) //checks to see if the tile the mob stands on is holy
+	var/turf/T = get_turf(A)
+	if(!T)
+		return 0
+	if(!T.holy)
+		return 0
+	return 1  //The tile is holy. Beware!
 
 
 /proc/findname(msg)
@@ -363,7 +370,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				if(M.mind in SSticker.mode.cult)
 					return 2
 			if("nuclear")
-				if(M.mind in SSticker.mode.syndicates)
+				if(M.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
 					return 2
 			if("changeling")
 				if(M.mind.has_antag_datum(/datum/antagonist/changeling,TRUE))

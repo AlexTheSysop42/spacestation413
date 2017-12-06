@@ -1,10 +1,10 @@
+
 /obj/item/gun/energy/taser
 	name = "taser gun"
 	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
-	origin_tech = "combat=3"
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/tesla_revolver
@@ -13,17 +13,36 @@
 	icon_state = "tesla"
 	item_state = "tesla"
 	ammo_type = list(/obj/item/ammo_casing/energy/tesla_revolver)
-	origin_tech = "combat=4;materials=4;powerstorage=4"
 	can_flashlight = 0
 	pin = null
 	shaded_charge = 1
+
+
+/obj/item/gun/energy/ahab_tesla
+	name = "Ahab's Crosshairs"
+	desc = "A powerful tesla rifle styled after a legendary harpoon gun from a certain webcomic. Recharges over time. Avoid using without proper insulation!"
+	icon = 'icons/obj/guns/custom.dmi'
+	icon_state = "ahab"
+	item_state = "tesla"
+	ammo_type = list(/obj/item/ammo_casing/energy/ahab_tesla)
+	shaded_charge = 1
+	recoil = 2
+	fire_delay = 30
+	selfcharge = 1
+	charge_delay = 5
+	can_charge = 0
+	weapon_weight = WEAPON_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = SLOT_BACK
+	zoomable = TRUE
+	zoom_amt = 5
+	zoom_out_amt = 8
 
 /obj/item/gun/energy/e_gun/advtaser
 	name = "hybrid taser"
 	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams."
 	icon_state = "advtaser"
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/disabler)
-	origin_tech = "combat=4"
 	ammo_x_offset = 2
 
 /obj/item/gun/energy/e_gun/advtaser/cyborg
@@ -38,7 +57,6 @@
 	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse."
 	icon_state = "disabler"
 	item_state = null
-	origin_tech = "combat=3"
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 3
 

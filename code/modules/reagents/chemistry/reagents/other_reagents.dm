@@ -33,6 +33,16 @@
 				C.blood_volume = min(C.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 
 
+/datum/reagent/blood/reaction_obj(var/obj/O, var/volume)
+	if(istype(O, /obj/item/clothing/mask/stone))
+		var/obj/item/clothing/mask/stone/S = O
+		S.spikes()
+
+	if(..())
+		return 1
+
+
+
 /datum/reagent/blood/on_new(list/data)
 	if(istype(data))
 		SetViruses(src, data)
@@ -197,6 +207,50 @@
 	if(is_servant_of_ratvar(M))
 		to_chat(M, "<span class='userdanger'>A darkness begins to spread its unholy tendrils through your mind, purging the Justiciar's influence!</span>")
 	..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(isvampire(H))
+			if(!(VAMP_UNDYING in H.mind.vampire.powers))
+				if(method == TOUCH)
+
+					if(H.wear_mask)
+						to_chat(H, "<span class='warning'>Your mask protects you from the holy water!</span>")
+						return
+
+					if(H.head)
+						to_chat(H, "<span class='warning'>Your helmet protects you from the holy water!</span>")
+						return
+
+
+					if(prob(15) && volume >= 30)
+						var/obj/item/bodypart/affecting = H.get_bodypart(HEAD)
+						if(affecting)
+							if(!(VAMP_MATURE in H.mind.vampire.powers))
+								to_chat(H, "<span class='danger'>A freezing liquid covers your face. Its melting!</span>")
+								H.mind.vampire.smitecounter += 60 //Equivalent from metabolizing all this holy water normally
+								affecting.receive_damage(30, 0)
+								H.facial_hair_style = "Shaved"
+								H.hair_style = "Bald"
+								H.update_hair()
+								H.status_flags |= DISFIGURED
+								H.emote("scream")
+							else
+								to_chat(H, "<span class='warning'>A freezing liquid covers your face. Your vampiric powers protect you!</span>")
+								H.mind.vampire.smitecounter += 12 //Ditto above
+
+					else
+						if(!(VAMP_MATURE in H.mind.vampire.powers))
+							to_chat(H, "<span class='danger'>You are doused with a freezing liquid. You're melting!</span>")
+							H.adjustFireLoss(min(15, volume * 2)) //Uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
+							H.mind.vampire.smitecounter += volume * 2
+						else
+							to_chat(H, "<span class='warning'>You are doused with a freezing liquid. Your vampiric powers protect you!</span>")
+							H.mind.vampire.smitecounter += volume * 0.4
+				else
+					H.adjustFireLoss(min(15, volume * 2))
+					H.mind.vampire.smitecounter += 5
+
+				H.update_damage_overlays()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/M)
 	if(!data)
@@ -208,6 +262,22 @@
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
+
+		if(isvampire(M))
+			if(!(VAMP_MATURE in M.mind.vampire.powers))
+				to_chat(M, "<span class='danger'>A freezing liquid permeates your bloodstream. Your vampiric powers fade and your insides burn.</span>")
+				M.mind.vampire.smitecounter += 10 //50 units to catch on fire. Generally you'll get fucked up quickly
+			else
+				to_chat(M, "<span class='warning'>A freezing liquid permeates your bloodstream. Your vampiric powers counter most of the damage.</span>")
+				M.mind.vampire.smitecounter += 2 //Basically nothing, unless you drank multiple bottles of holy water (250 units to catch on fire !)
+
+		if(M.mind && M.mind.special_role == "VampThrall")
+			SSticker.mode.remove_thrall(M.mind)
+			M.visible_message("<span class='notice'>[M] suddenly becomes calm and collected again, \his eyes clear up.</span>",
+			"<span class='notice'>Your blood cools down and you are inhabited by a sensation of untold calmness.</span>")
+
+
+
 		if(iscultist(M) && prob(5))
 			M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
 		else if(is_servant_of_ratvar(M) && prob(8))
@@ -238,6 +308,8 @@
 	if(reac_volume>=10)
 		for(var/obj/effect/rune/R in T)
 			qdel(R)
+		for(var/obj/item/vent_dummy/cursed/D in T)
+			D.purify()
 	T.Bless()
 
 /datum/reagent/fuel/unholywater		//if you somehow managed to extract this from someone, dont splash it on yourself and have a smoke
