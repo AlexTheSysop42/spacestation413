@@ -429,6 +429,14 @@
 	icon_state = "draculacoat"
 	item_state = "draculacoat"
 
+/obj/item/clothing/suit/storage/draculacoat
+	name = "Vampire Coat"
+	desc = "What is a man? A miserable little pile of secrets."
+	icon_state = "draculacoat"
+	blood_overlay_type = "coat"
+	//cant_hold = list(/obj/item/nullrod, /obj/item/storage/book/bible)
+	armor = list(melee = 30, bullet = 20, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/suit/drfreeze_coat
 	name = "doctor freeze's labcoat"
 	desc = "A labcoat imbued with the power of features and freezes."

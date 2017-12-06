@@ -60,6 +60,7 @@
 	var/datum/mind/soulOwner //who owns the soul.  Under normal circumstances, this will point to src
 	var/hasSoul = TRUE // If false, renders the character unable to sell their soul.
 	var/isholy = FALSE //is this person a chaplain or admin role allowed to use bibles
+	var/datum/vampire/vampire			//vampire holder
 
 	var/mob/living/enslaved_to //If this mind's master is another mob (i.e. adamantine golems)
 	var/datum/language_holder/language_holder
@@ -208,6 +209,10 @@
 		remove_antag_datum(nuke.type)
 		special_role = null
 
+/datum/mind/proc/remove_vampire()
+	remove_antag_datum(/datum/antagonist/vampire)
+	special_role = null
+
 /datum/mind/proc/remove_wizard()
 	remove_antag_datum(/datum/antagonist/wizard)
 	special_role = null
@@ -244,6 +249,7 @@
 	remove_wizard()
 	remove_cultist()
 	remove_rev()
+	remove_vampire()
 	SSticker.mode.update_traitor_icons_removed(src)
 	SSticker.mode.update_cult_icons_removed(src)
 
@@ -486,6 +492,28 @@
 		sections["monkey"] = text
 
 	if(ishuman(current))
+
+		/** VAMPIRE ***/
+		text = "vampire"
+		if (SSticker.mode.config_tag=="vampire")
+			text = uppertext(text)
+		text = "<i><b>[text]</b></i>: "
+		var/datum/antagonist/vampire/V = has_antag_datum(/datum/antagonist/vampire)
+
+		if (V)
+			text += "<b>YES</b>|<a href='?src=[REF(src)];vampire=clear'>no</a>"
+			if (objectives.len==0)
+				text += "<br>Objectives are empty! <a href='?src=[REF(src)];vampire=autoobjectives'>Randomize!</a>"
+		else
+			text += "<a href='?src=[REF(src)];vampire=vampire'>yes</a> | <b>NO</b>"
+
+		/** ENTHRALLED ***/
+		text += "<br><i><b>enthralled</b></i>: "
+		if(src in SSticker.mode.enthralled)
+			text += "<b><font color='#FF0000'>YES</font></b>|no"
+		else
+			text += "yes|<b>NO</b>"
+		sections["vampire"] = text
 
 		/** NUCLEAR ***/
 		text = "nuclear"
@@ -1057,6 +1085,21 @@
 					C.updateappearance(mutcolor_update=1)
 					C.domutcheck()
 
+	else if (href_list["vampire"])
+		switch(href_list["vampire"])
+			if("clear")
+				remove_antag_datum(/datum/antagonist/vampire)
+				special_role = null
+				log_admin("[key_name_admin(usr)] has de-vampired [current].")
+			if("vampire")
+				make_Vampire()
+				log_admin("[key_name_admin(usr)] has vampired [current].")
+			if("autoobjectives")
+				var/datum/antagonist/vampire/V = has_antag_datum(/datum/antagonist/vampire)
+				if(V)
+					V.forge_objectives()
+				to_chat(usr, "<span class='notice'>The objectives for vampire [key] have been generated. You can edit them and announce manually.</span>")
+
 	else if (href_list["nuclear"])
 		switch(href_list["nuclear"])
 			if("clear")
@@ -1319,6 +1362,14 @@
 		var/datum/antagonist/traitor/T = new(src)
 		T.should_specialise = TRUE
 		add_antag_datum(T)
+
+
+/datum/mind/proc/make_Vampire()
+	if(!has_antag_datum(/datum/antagonist/vampire))
+		log_admin("attempting to create vampire")
+		message_admins("attempting to create vampire")
+		special_role = "Vampire"
+		add_antag_datum(/datum/antagonist/vampire)
 
 /datum/mind/proc/make_Changling()
 	var/datum/antagonist/changeling/C = has_antag_datum(/datum/antagonist/changeling)

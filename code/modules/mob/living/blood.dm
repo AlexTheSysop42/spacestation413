@@ -15,6 +15,39 @@
 		to_chat(src, "<span class='warning'>The blood soaks through your bandage.</span>")
 
 
+
+/mob/living/carbon/human/var/datum/reagents/vessel	//Container for blood and BLOOD ONLY. Do not transfer other chems here.
+
+
+//Initializes blood vessels
+/mob/living/carbon/human/proc/make_blood()
+	if(vessel)
+		return
+
+	vessel = new/datum/reagents(BLOOD_VOLUME_MAXIMUM)
+	vessel.my_atom = src
+
+	if(NOBLOOD in dna.species.species_traits) //We want the var for safety but we can do without the actual blood.
+		return
+
+	vessel.add_reagent("blood", BLOOD_VOLUME_NORMAL)
+	spawn(1)
+		fixblood()
+
+/mob/living/carbon/human/proc/fixblood()
+	for(var/datum/reagent/blood/B in vessel.reagent_list)
+		if(B.id == "blood")
+			B.data["donor"] = src
+			B.data["viruses"] = null
+			B.data["blood_DNA"] = dna.unique_enzymes
+			//B.data["blood_colour"] = blood_DNA["color"]
+			B.data["blood_type"] = dna.blood_type
+			B.data["resistances"] = null
+			B.data["antibodies"] = null
+
+			//B.color = B.data["blood_colour"]
+
+
 /mob/living/carbon/monkey/handle_blood()
 	if(bodytemperature >= 225 && !(disabilities & NOCLONE)) //cryosleep or husked people do not pump the blood.
 		//Blood regeneration if there is some space

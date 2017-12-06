@@ -179,6 +179,15 @@
 /mob/proc/get_item_by_slot(slot_id)
 	return null
 
+/mob/proc/handle_alpha()
+	if(alphas.len < 1)
+		alpha = 255
+	else
+		var/lowest_alpha = 255
+		for(var/alpha_modification in alphas)
+			lowest_alpha = min(lowest_alpha,alphas[alpha_modification])
+		alpha = lowest_alpha
+
 /mob/proc/restrained(ignore_grab)
 	return
 

@@ -109,6 +109,14 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 		user.take_bodypart_damage(0,10)
 		return
 
+	if(isvampire(user)) //Vampire trying to use it
+		to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for your blasphemy!</span>")
+		user.fire_stacks += 5
+		user.IgniteMob()
+		user.emote("scream")
+		M.mind.vampire.smitecounter += 50 //Once we are extinguished, we will be quite vulnerable regardless
+		return
+
 	if (!heal_mode)
 		return ..()
 

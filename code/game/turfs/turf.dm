@@ -17,6 +17,9 @@
 
 	var/list/image/blueprint_data //for the station blueprints, images of objects eg: pipes
 
+	// holy water
+	var/holy = 0
+
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
 

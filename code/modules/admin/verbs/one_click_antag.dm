@@ -15,6 +15,7 @@
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=changelings'>Make Changelings</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=revs'>Make Revs</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=cult'>Make Cult</a><br>
+		<a href='?src=[REF(src)];[HrefToken()];makeAntag=vampire'>Make Vampire</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=clockcult'>Make Clockwork Cult</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=blob'>Make Blob</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=wizard'>Make Wizard (Requires Ghosts)</a><br>
@@ -144,6 +145,37 @@
 	var/mob/living/carbon/human/new_character = makeBody(selected)
 	new_character.mind.make_Wizard()
 	return TRUE
+
+/datum/admins/proc/makeVampire()
+	message_admins("One click vampire")
+	log_admin("One click vampire")
+	var/datum/game_mode/vampire/temp = new
+
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
+		temp.restricted_jobs += temp.protected_jobs
+
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
+		temp.restricted_jobs += "Assistant"
+
+	var/list/mob/living/carbon/human/candidates = list()
+	var/mob/living/carbon/human/H = null
+
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
+		if(isReadytoRumble(applicant, ROLE_VAMPIRE))
+			if(temp.age_check(applicant.client))
+				if(!(applicant.job in temp.restricted_jobs))
+					candidates += applicant
+
+	if(candidates.len)
+		var/numRevs = min(candidates.len, 3)
+
+		for(var/i = 0, i<numRevs, i++)
+			H = pick(candidates)
+			H.mind.make_Vampire()
+			candidates.Remove(H)
+		return 1
+	return 0
+
 
 
 /datum/admins/proc/makeCult()

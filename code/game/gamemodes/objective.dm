@@ -7,6 +7,7 @@
 	var/target_amount = 0				//If they are focused on a particular number. Steal objectives have their own counter.
 	var/completed = 0					//currently only used for custom objectives.
 	var/martyr_compatible = 0			//If the objective is compatible with martyr objective, i.e. if you can still do it while dead.
+	var/blocked = 0                     // Universe fucked, you lost.
 
 /datum/objective/New(var/text)
 	if(text)
@@ -139,6 +140,21 @@
 	..()
 	if(target && !target.current)
 		explanation_text = "Assassinate [target.name], who was obliterated"
+
+
+/datum/objective/blood/proc/gen_amount_goal(low = 150, high = 400)
+	target_amount = rand(low,high)
+	target_amount = round(round(target_amount/5)*5)
+	explanation_text = "Accumulate atleast [target_amount] units of blood in total."
+	return target_amount
+
+/datum/objective/blood/check_completion()
+	if(blocked)
+		return 0
+	if(owner && owner.vampire && owner.vampire.bloodtotal && owner.vampire.bloodtotal >= target_amount)
+		return 1
+	else
+		return 0
 
 /datum/objective/mutiny
 	var/target_role_type=0

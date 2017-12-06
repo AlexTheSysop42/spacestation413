@@ -47,6 +47,7 @@
 #define ANTAG_HUD_SOULLESS		18
 #define ANTAG_HUD_CLOCKWORK		19
 #define ANTAG_HUD_BROTHER		20
+#define ANTAG_HUD_VAMPIRE		21
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
