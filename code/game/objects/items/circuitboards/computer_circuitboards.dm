@@ -10,6 +10,10 @@
 	name = "Message Monitor (Computer Board)"
 	build_path = /obj/machinery/computer/message_monitor
 
+/obj/item/weapon/circuitboard/computer/telesci_console
+	name = "Telescience Console (Computer Board)"
+	build_path = /obj/machinery/computer/telescience
+
 /obj/item/circuitboard/computer/security
 	name = "Security Cameras (Computer Board)"
 	build_path = /obj/machinery/computer/security
