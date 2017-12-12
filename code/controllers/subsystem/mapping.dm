@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/shuttle_templates = list()
 	var/list/shelter_templates = list()
+	var/list/capsule_templates = list()
 
 	var/list/areas_in_z = list()
 
@@ -52,7 +53,7 @@ SUBSYSTEM_DEF(mapping)
 	var/space_zlevels = list()
 	for(var/i in ZLEVEL_SPACEMIN to ZLEVEL_SPACEMAX)
 		switch(i)
-			if(ZLEVEL_MINING, ZLEVEL_LAVALAND, ZLEVEL_EMPTY_SPACE, ZLEVEL_TRANSIT, ZLEVEL_CITYOFCOGS)
+			if(ZLEVEL_MINING, ZLEVEL_LAVALAND, ZLEVEL_EMPTY_SPACE, ZLEVEL_TRANSIT, ZLEVEL_CITYOFCOGS, ZLEVEL_BLUESPACE)
 				continue
 			else
 				space_zlevels += i
@@ -221,6 +222,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
+	preloadCapsuleTemplates()
 
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()
 	// Still supporting bans by filename
@@ -269,3 +271,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		shelter_templates[S.shelter_id] = S
 		map_templates[S.shelter_id] = S
+
+/datum/controller/subsystem/mapping/proc/preloadCapsuleTemplates()
+	for(var/item in subtypesof(/datum/map_template/mobcapsule))
+		var/datum/map_template/mobcapsule/capsule_type = item
+		if(!(initial(capsule_type.mappath)))
+			continue
+		var/datum/map_template/mobcapsule/S = new capsule_type()
+
+		capsule_templates[S.capsule_id] = S
+		map_templates[S.capsule_id] = S

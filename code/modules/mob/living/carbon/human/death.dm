@@ -7,7 +7,7 @@
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(dna.species.has_castes)
 		if(with_bodyparts)
-			switch(troll_caste)
+			switch(dna.features["troll_caste"])
 				if("burgundy")
 					new /obj/effect/gibspawner/troll/r(get_turf(src), dna, get_static_viruses())
 				if("brown")
@@ -33,7 +33,7 @@
 				if("fuschia")
 					new /obj/effect/gibspawner/troll/f(get_turf(src), dna, get_static_viruses())
 		else
-			switch(troll_caste)
+			switch(dna.features["troll_caste"])
 				if("burgundy")
 					new /obj/effect/gibspawner/trollbodypartless/r(get_turf(src), dna, get_static_viruses())
 				if("brown")

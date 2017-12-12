@@ -17,6 +17,18 @@
 		if(legcuffed)
 			. += legcuffed.slowdown
 
+
+	for(var/X in list("l_leg", "r_leg"))
+		var/obj/item/bodypart/affecting = get_bodypart(X)
+		if(affecting.damagestatus == BP_BROKEN)
+			. += 2
+			if (!is_holding_item_of_type(/obj/item/cane))
+				. += 1
+		else if(affecting.damagestatus == BP_SPLINTED)
+			. += 1
+			if (!is_holding_item_of_type(/obj/item/cane))
+				. += 0.5
+
 	if(stat == SOFT_CRIT)
 		. += SOFTCRIT_ADD_SLOWDOWN
 

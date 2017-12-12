@@ -171,6 +171,35 @@
 /datum/action/item_action/toggle_firemode
 	name = "Toggle Firemode"
 
+/datum/action/item_action/honk_horn
+	name = "Honk Honk"
+
+/datum/action/item_action/honk_horn/Trigger()
+	var/obj/vehicle/clowncar/CC = target
+	if(istype(CC))
+		CC.honk()
+	return ..()
+
+/datum/action/item_action/loud_horn
+	name = "Honk the horn!"
+
+/datum/action/item_action/loud_horn/Trigger()
+	var/obj/vehicle/adminbus/AB = target
+	if(istype(AB))
+		AB.horn()
+	return ..()
+
+/datum/action/item_action/stopthebus
+	name = "Stop the bus!"
+
+/datum/action/item_action/stopthebus/Trigger()
+	var/obj/vehicle/adminbus/AB = target
+	if(istype(AB))
+		AB.stop()
+	return ..()
+
+
+
 /datum/action/item_action/rcl
 	name = "Change Cable Color"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'

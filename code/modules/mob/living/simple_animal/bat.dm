@@ -131,7 +131,7 @@
 /mob/living/simple_animal/hostile/scarybat/book
 	name = "flying book"
 	desc = "An enchanted book, flying through the air by flapping it's pages."
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/animal2.dmi'
 	icon_state = "bookbat"
 	icon_living = "bookbat"
 	icon_dead = "bookbat_dead"

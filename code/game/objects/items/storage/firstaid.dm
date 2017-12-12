@@ -32,6 +32,7 @@
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/ancient
 	icon_state = "firstaid"

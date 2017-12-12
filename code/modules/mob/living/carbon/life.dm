@@ -35,6 +35,12 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing(times_fired)
+
+	if(istype(src.loc, /obj/vehicle))
+		var/obj/vehicle/V = src.loc
+		if (V.air_recycling) //ignore breathing needs entirely due to adminbus shenanigans
+			return
+
 	if((times_fired % 4) == 2 || failed_last_breath)
 		breathe() //Breathe per 4 ticks, unless suffocating
 	else
@@ -103,7 +109,7 @@
 
 //Third link in a breath chain, calls handle_breath_temperature()
 /mob/living/carbon/proc/check_breath(datum/gas_mixture/breath)
-	if((status_flags & GODMODE))
+	if((status_flags & GODMODE)||(status_flags & ADMINBUS))
 		return
 
 	var/lungs = getorganslot(ORGAN_SLOT_LUNGS)

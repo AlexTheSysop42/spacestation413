@@ -78,8 +78,9 @@
 		L[DNA_FACIAL_HAIR_COLOR_BLOCK] = sanitize_hexcolor(H.facial_hair_color)
 		L[DNA_SKIN_TONE_BLOCK] = construct_block(GLOB.skin_tones.Find(H.skin_tone), GLOB.skin_tones.len)
 		L[DNA_EYE_COLOR_BLOCK] = sanitize_hexcolor(H.eye_color)
-		L[DNA_TROLL_HORNS_BLOCK] = construct_block(GLOB.troll_horns_list.Find(H.troll_horn),GLOB.troll_horns_list.len)
-		L[DNA_TROLL_CASTE_BLOCK] = construct_block(GLOB.troll_castes.Find(H.troll_caste),GLOB.troll_castes.len)
+		//FIXME
+		//L[DNA_TROLL_HORNS_BLOCK] = construct_block(GLOB.troll_horns_list.Find(H.troll_horn),GLOB.troll_horns_list.len)
+		//L[DNA_TROLL_CASTE_BLOCK] = construct_block(GLOB.troll_castes.Find(H.troll_caste),GLOB.troll_castes.len)
 
 	for(var/i=1, i<=DNA_UNI_IDENTITY_BLOCKS, i++)
 		if(L[i])
@@ -130,10 +131,10 @@
 			setblock(uni_identity, blocknumber, construct_block(GLOB.facial_hair_styles_list.Find(H.facial_hair_style), GLOB.facial_hair_styles_list.len))
 		if(DNA_HAIR_STYLE_BLOCK)
 			setblock(uni_identity, blocknumber, construct_block(GLOB.hair_styles_list.Find(H.hair_style), GLOB.hair_styles_list.len))
-		if(DNA_TROLL_HORNS_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.troll_horns_list.Find(H.troll_horn),GLOB.troll_horns_list.len))
-		if(DNA_TROLL_CASTE_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.troll_castes.Find(H.troll_caste),GLOB.troll_castes.len))
+		//if(DNA_TROLL_HORNS_BLOCK)
+			//setblock(uni_identity, blocknumber, construct_block(GLOB.troll_horns_list.Find(H.troll_horn),GLOB.troll_horns_list.len))
+		//if(DNA_TROLL_CASTE_BLOCK)
+			//setblock(uni_identity, blocknumber, construct_block(GLOB.troll_castes.Find(H.troll_caste),GLOB.troll_castes.len))
 
 /datum/dna/proc/mutations_say_mods(message)
 	if(message)
@@ -283,8 +284,8 @@
 	eye_color = sanitize_hexcolor(getblock(structure, DNA_EYE_COLOR_BLOCK))
 	facial_hair_style = GLOB.facial_hair_styles_list[deconstruct_block(getblock(structure, DNA_FACIAL_HAIR_STYLE_BLOCK), GLOB.facial_hair_styles_list.len)]
 	hair_style = GLOB.hair_styles_list[deconstruct_block(getblock(structure, DNA_HAIR_STYLE_BLOCK), GLOB.hair_styles_list.len)]
-	troll_horn = GLOB.troll_horns_list[deconstruct_block(getblock(structure, DNA_TROLL_HORNS_BLOCK), GLOB.troll_horns_list.len)]
-	troll_caste = GLOB.troll_castes[deconstruct_block(getblock(structure, DNA_TROLL_CASTE_BLOCK), GLOB.troll_castes.len)]
+	//troll_horn = GLOB.troll_horns_list[deconstruct_block(getblock(structure, DNA_TROLL_HORNS_BLOCK), GLOB.troll_horns_list.len)]
+	//troll_caste = GLOB.troll_castes[deconstruct_block(getblock(structure, DNA_TROLL_CASTE_BLOCK), GLOB.troll_castes.len)]
 	if(icon_update)
 		update_body()
 		update_hair()

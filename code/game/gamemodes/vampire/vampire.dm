@@ -11,7 +11,7 @@
 	config_tag = "vampire"
 	restricted_jobs = list("AI", "Cyborg", "Mobile MMI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain") //Consistent screening has filtered all infiltration attempts on high value jobs
 	protected_jobs = list()
-	required_players = 1
+	required_players = 5
 	var/required_players_secret = 10
 	required_enemies = 1
 	recommended_enemies = 4
@@ -64,7 +64,7 @@
 	return ..()
 
 
-/datum/game_mode/proc/vampire_completion()
+/datum/game_mode/proc/auto_declare_completion_vampire()
 
 	if(vampires.len)
 		var/text = "<br><font size=3><b>The [vampire_name]s were:</b></font>"
@@ -130,11 +130,12 @@
 				text += "<br><font color='green'><B>The [special_role_text] was successful!</B></font>"
 			else
 				text += "<br><font color='red'><B>The [special_role_text] has failed!</B></font>"
+		to_chat(world, text)
 
 	return text
 
 /datum/game_mode/proc/auto_declare_completion_enthralled()
-	var/text = vampire_completion()
+	//var/text = vampire_completion()
 	if(enthralled.len)
 		text += {"<br><FONT size = 2><B>The Enthralled were:</B></FONT>"}
 		for(var/datum/mind/Mind in enthralled)
@@ -233,18 +234,18 @@
 		if(H.blood_volume == 0)
 			to_chat(src, "<span class='warning'>They've got no blood left to give.</span>")
 			break
-		if(H.stat < 3) //alive
-			blood = min(15, H.vessel.get_reagent_amount("blood"))// if they have less than 10 blood, give them the remnant else they get 10 blood
+		if(H.stat != DEAD) //alive
+			blood = min(15, H.blood_volume)// if they have less than 10 blood, give them the remnant else they get 10 blood
 			src.mind.vampire.bloodtotal += blood
 			src.mind.vampire.bloodusable += blood
 			H.adjustCloneLoss(10) // beep boop 10 damage
 		else
-			blood = min(7, H.vessel.get_reagent_amount("blood"))// The dead only give 5 bloods
+			blood = min(7, H.blood_volume)// The dead only give 5 bloods
 			src.mind.vampire.bloodtotal += blood
 		if(bloodtotal != src.mind.vampire.bloodtotal)
 			to_chat(src, "<span class='notice'>You have accumulated [src.mind.vampire.bloodtotal] [src.mind.vampire.bloodtotal > 1 ? "units" : "unit"] of blood[src.mind.vampire.bloodusable != bloodusable ?", and have [src.mind.vampire.bloodusable] left to use" : "."]</span>")
 		check_vampire_upgrade(mind)
-		H.vessel.remove_reagent("blood", 30)
+		H.blood_volume = max(H.blood_volume - 30, 0)
 
 	src.mind.vampire.draining = null
 	to_chat(src, "<span class='notice'>You stop draining [H.name] of blood.</span>")

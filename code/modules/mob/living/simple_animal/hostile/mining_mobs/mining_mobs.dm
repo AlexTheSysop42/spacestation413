@@ -50,7 +50,7 @@
 		var/obj/item/T = AM
 		if(!stat)
 			Aggro()
-		if(T.throwforce <= 20)
+		if(T.throwforce <= 20 && !istype(AM, /obj/item/device/mobcapsule)) // exception for lazarus capsules
 			visible_message("<span class='notice'>The [T.name] [throw_message] [src.name]!</span>")
 			return
 	..()

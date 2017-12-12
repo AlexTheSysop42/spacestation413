@@ -10,6 +10,9 @@ z5 = mining
 z6 = city of cogs
 Everything else = randomized space
 Last space-z level = empty
+
+HSD additions as of december 6, 2017
+z8 = bluespace structures
 */
 
 #define CROSSLINKED 2
@@ -41,6 +44,7 @@ Last space-z level = empty
 #define ZLEVEL_MINING 5
 #define ZLEVEL_LAVALAND 5
 #define ZLEVEL_CITYOFCOGS 6
+#define ZLEVEL_BLUESPACE 8
 #define ZLEVEL_EMPTY_SPACE 12
 //Unless you modify it in map config should be equal to ZLEVEL_SPACEMAX
 #define ZLEVEL_TRANSIT 13

@@ -16,38 +16,6 @@
 
 
 
-/mob/living/carbon/human/var/datum/reagents/vessel	//Container for blood and BLOOD ONLY. Do not transfer other chems here.
-
-
-//Initializes blood vessels
-/mob/living/carbon/human/proc/make_blood()
-	if(vessel)
-		return
-
-	vessel = new/datum/reagents(BLOOD_VOLUME_MAXIMUM)
-	vessel.my_atom = src
-
-	if(NOBLOOD in dna.species.species_traits) //We want the var for safety but we can do without the actual blood.
-		return
-
-	vessel.add_reagent("blood", BLOOD_VOLUME_NORMAL)
-	spawn(1)
-		fixblood()
-
-/mob/living/carbon/human/proc/fixblood()
-	for(var/datum/reagent/blood/B in vessel.reagent_list)
-		if(B.id == "blood")
-			B.data["donor"] = src
-			B.data["viruses"] = null
-			B.data["blood_DNA"] = dna.unique_enzymes
-			//B.data["blood_colour"] = blood_DNA["color"]
-			B.data["blood_type"] = dna.blood_type
-			B.data["resistances"] = null
-			B.data["antibodies"] = null
-
-			//B.color = B.data["blood_colour"]
-
-
 /mob/living/carbon/monkey/handle_blood()
 	if(bodytemperature >= 225 && !(disabilities & NOCLONE)) //cryosleep or husked people do not pump the blood.
 		//Blood regeneration if there is some space
@@ -230,7 +198,7 @@
 mob/living/carbon/human/get_blood_data(blood_id)
 	var/color
 	if((blood_id == "blood") && (dna.species.has_castes))
-		color = get_color_from_caste(troll_caste)
+		color = get_color_from_caste(dna.features["troll_caste"])
 	return ..(blood_id,color)
 
 //get the id of the substance this mob use as blood.
@@ -365,7 +333,7 @@ mob/living/carbon/human/get_blood_data(blood_id)
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!(NOBLOOD in dna.species.species_traits))
 		if(dna.species.has_castes)
-			..(blood_caste=troll_caste)
+			..(blood_caste=dna.features["troll_caste"])
 		else
 			..()
 

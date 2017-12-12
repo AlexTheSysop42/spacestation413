@@ -101,3 +101,11 @@
 	status_flags |= DISFIGURED	//makes them unknown
 	update_body()
 	return 1
+
+/mob/living/carbon/fully_heal(admin_revive = 0)
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/L = X
+		L.damagestatus = BP_HEALTHY
+		L.perma_injury = 0
+	. = ..()
+

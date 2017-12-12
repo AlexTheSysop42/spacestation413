@@ -702,8 +702,6 @@
 	mind.current.update_sight()
 
 /mob/proc/remove_vampire_vision()
-	log_admin("removing vision")
-	message_admins("removing vision")
 
 	var/obj/item/organ/eyes/E = mind.current.getorganslot(ORGAN_SLOT_EYES)
 	E.sight_flags = 0
@@ -740,6 +738,25 @@
 	if(bloodold != mind.vampire.bloodusable)
 		to_chat(src, "<span class='notice'><b>You have [mind.vampire.bloodusable] left to use.</b></span>")
 
+/client/proc/vampire_spawnglass() //BUT ENOUGH TALK
+	set category = "Vampire"
+	set name = "Conjure Wine Glass (5)"
+	set desc = "Conjures a wine glass filled with delicious red from your private supply."
+
+	var/datum/mind/M = usr.mind
+	if(!M)
+		return
+
+	if(M.current.vampire_power(5, 0))
+		var/obj/item/reagent_containers/food/drinks/drinkingglass/filled/bloodwine/W = new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/bloodwine(M.current.loc, M.current)
+		if(M.current.put_in_hands(W))
+			to_chat(M.current, "[W] materializes into your hands!")
+		else
+			to_chat(M.current, "\The [W] materializes onto the floor.")
+		M.current.verbs -= /client/proc/vampire_spawnglass
+		sleep(300)
+		if(M && M.current)
+			M.current.verbs += /client/proc/vampire_spawnglass
 
 
 /client/proc/vampire_bite()

@@ -27,8 +27,41 @@
 
 /mob/living/carbon/human/Move(NewLoc, direct)
 	. = ..()
+	stepcounter += 1
 	for(var/datum/mutation/human/HM in dna.mutations)
 		HM.on_move(src, NewLoc)
+
+	//Bone fracture effects placeholder until we get organ damage
+	if (stepcounter == 10)
+		var/obj/item/bodypart/HD = get_bodypart("head")
+		if(HD.damagestatus == BP_BROKEN)
+			if(prob(1))
+				adjustBrainLoss(2)
+				blur_eyes(1)
+				to_chat(src, "<span class='notice'>You feel a sharp pain in the center of your skull.</span>")
+				emote("scream")
+			if(prob(1))
+				adjustEarDamage(5, 10)
+				to_chat(src, "<span class='notice'>You feel a sharp pain in your inner ear.</span>")
+			if(prob(1))
+				adjust_eye_damage(5)
+				blur_eyes(1)
+				to_chat(src, "<span class='notice'>You feel a stinging pressure behind your eyeballs.</span>")
+
+		var/obj/item/bodypart/CH = get_bodypart("chest")
+		if(CH.damagestatus == BP_BROKEN)
+			if(prob(1))
+				if(losebreath <= 10)
+					losebreath = Clamp(losebreath + 5, 0, 10)
+				adjustOxyLoss(10)
+				to_chat(src, "<span class='notice'>You feel a sting in your lungs and lose your breath.</span>")
+
+			if(prob(1))
+				Stun(rand(40,60))
+				adjustToxLoss(1)
+				vomit(50)
+				to_chat(src, "<span class='notice'>You feel a sharp pain in your abdomen as a wave of nausea washes over you.</span>")
+		stepcounter = 0
 
 	if(shoes)
 		if(!lying && !buckled)

@@ -226,3 +226,38 @@
 	else
 		to_chat(user, "[src] is empty.")
 	return
+
+/obj/item/bonegel
+	name = "bone gel"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "bone-gel"
+	lefthand_file = 'icons/mob/inhands/surgery_tools_left.dmi'
+	righthand_file = 'icons/mob/inhands/surgery_tools_right.dmi'
+	item_state = "bonegel"
+	force = 0
+	throwforce = 1
+	w_class = WEIGHT_CLASS_TINY
+	var/usage_amount = 10
+
+/obj/item/bonesetter
+	name = "bone setter"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "bone setter"
+	lefthand_file = 'icons/mob/inhands/surgery_tools_left.dmi'
+	righthand_file = 'icons/mob/inhands/surgery_tools_right.dmi'
+	item_state = "bonesetter"
+	force = 8
+	throwforce = 9
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 3
+	throw_range = 5
+	attack_verb = list("attacks", "hits", "bludgeons")
+
+/obj/item/bonesetter/bone_mender
+	name = "bone mender"
+	desc = "A favorite among skeletons. It even sounds like a skeleton too."
+	icon = 'icons/obj/surgery2.dmi'
+	icon_state = "bone-mender"
+	lefthand_file = 'icons/mob/inhands/surgery_tools_left.dmi'
+	righthand_file = 'icons/mob/inhands/surgery_tools_right.dmi'
+	item_state = "bonemender"

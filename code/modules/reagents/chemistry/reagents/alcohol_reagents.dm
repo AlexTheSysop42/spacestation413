@@ -262,6 +262,19 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "A very classy looking drink."
 	shot_glass_icon_state = "shotglassred"
 
+/datum/reagent/consumable/ethanol/bloodwine
+	name = "Bloodwine"
+	id = "bloodwine"
+	description = "A premium alcoholic beverage made from distilled human blood."
+	color = "#cd0000" // rgb: 126, 64, 67
+	boozepwr = 15
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	taste_description = "blood"
+	glass_icon_state = "wineglass"
+	glass_name = "glass of bloodwine"
+	glass_desc = "A very morbid looking drink."
+	shot_glass_icon_state = "shotglassred"
+
 /datum/reagent/consumable/ethanol/lizardwine
 	name = "Lizard wine"
 	id = "lizardwine"

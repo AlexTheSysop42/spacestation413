@@ -1234,6 +1234,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/box/hug/reverse_revolver
 	restricted_roles = list("Clown")
 
+/datum/uplink_item/role_restricted/clown_car
+	name = "Clown Car"
+	desc = "A funny-looking car designed for circus events. Seats 30, very roomy!"
+	cost = 5
+	item = /obj/vehicle/clowncar
+	restricted_roles = list("Clown")
+
 /datum/uplink_item/role_restricted/mimery
 	name = "Guide to Advanced Mimery Series"
 	desc = "The classical two part series on how to further hone your mime skills. Upon studying the series, the user should be able to make 3x1 invisible walls, and shoot bullets out of their fingers. Obviously only works for Mimes."
@@ -1323,6 +1330,16 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 5 //you need two for full damage, so total of 10 for maximum damage
 	limited_stock = 2 //you can't use more than two!
 	restricted_roles = list("Shaft Miner")
+
+/datum/uplink_item/role_restricted/mastertrainer
+	name = "Master Trainer's Belt"
+	desc = "A trainer's belt containing 6 random hostile mobs loyal to you alone."
+	item = /obj/item/storage/belt/lazarus/antag
+	cost = 8
+	restricted_roles = list("Shaft Miner")
+
+/datum/uplink_item/role_restricted/mastertrainer/spawn_item(turf/loc, datum/component/uplink/U, mob/user)
+	return new item(loc, user)
 
 /datum/uplink_item/role_restricted/gushers
 	name = "Treacherous Teal Tangerine Fruit Gushers"

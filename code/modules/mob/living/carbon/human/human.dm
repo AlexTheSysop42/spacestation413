@@ -17,7 +17,6 @@
 	create_dna(src)
 	randomize_human(src)
 	dna.initialize_dna()
-	make_blood()
 
 	if(dna.species)
 		set_species(dna.species.type)

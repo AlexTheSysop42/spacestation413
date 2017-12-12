@@ -31397,6 +31397,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/table,
 /obj/item/surgicaldrill,
+/obj/item/bonegel,
+/obj/item/bonegel,
+/obj/item/bonegel,
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
 "bzJ" = (
@@ -31476,6 +31479,7 @@
 /obj/item/cautery{
 	pixel_x = 4
 	},
+/obj/item/bonesetter,
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
 "bzT" = (
@@ -97970,7 +97974,7 @@ bZQ
 caP
 cbO
 ccJ
-cdM
+bLS
 bLS
 cfp
 cge

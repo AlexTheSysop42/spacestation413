@@ -15,6 +15,7 @@
 	var/heal_burn = 0
 	var/stop_bleeding = 0
 	var/self_delay = 50
+	var/splint_bones = FALSE
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
 
@@ -46,6 +47,17 @@
 					return
 				else if(!H.bleed_rate)
 					to_chat(user, "<span class='warning'>[H] isn't bleeding!</span>")
+					return
+			else if(splint_bones)
+				if (!istype(affecting, (/obj/item/bodypart/chest || /obj/item/bodypart/head)))
+					if(affecting.damagestatus == BP_SPLINTED)
+						to_chat(user, "<span class='warning'>[C]'s [parse_zone(user.zone_selected)] is already splinted!</span>")
+						return
+					else if (affecting.damagestatus == BP_HEALTHY)
+						to_chat(user, "<span class='warning'>[C]'s [parse_zone(user.zone_selected)] does not need to be splinted!</span>")
+						return
+				else
+					to_chat(user, "<span class='warning'>Only limbs can be splinted!</span>")
 					return
 
 
@@ -93,6 +105,11 @@
 		if(affecting.status == BODYPART_ORGANIC) //Limb must be organic to be healed - RR
 			if(affecting.heal_damage(heal_brute, heal_burn))
 				C.update_damage_overlays()
+
+			if(splint_bones)
+				if(affecting.damagestatus == BP_BROKEN)
+					affecting.damagestatus = BP_SPLINTED
+					affecting.perma_injury -= 10
 		else
 			to_chat(user, "<span class='notice'>Medicine won't work on a robotic limb!</span>")
 	else
@@ -143,3 +160,12 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	heal_burn = 40
 	self_delay = 20
+
+/obj/item/stack/medical/splint
+	name = "medical splints"
+	icon = 'icons/obj/items_and_weapons2.dmi'
+	icon_state = "splint"
+	singular_name = "medical splint"
+	amount = 5
+	max_amount = 5
+	splint_bones = TRUE

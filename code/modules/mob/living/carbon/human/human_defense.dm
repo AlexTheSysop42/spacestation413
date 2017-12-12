@@ -643,6 +643,7 @@
 				var/status = ""
 				var/brutedamage = LB.brute_dam
 				var/burndamage = LB.burn_dam
+				var/damagestat = LB.damagestatus
 				if(hallucination)
 					if(prob(30))
 						brutedamage += rand(30,40)
@@ -664,6 +665,12 @@
 					status += "blistered"
 				else if(burndamage > 0)
 					status += "numb"
+
+				if (damagestat != BP_HEALTHY)
+					if(brutedamage > 0 || burndamage > 0)
+						status += ". "
+					status += LB.broken_description
+
 				if(status == "")
 					status = "OK"
 				to_chat(src, "\t <span class='[status == "OK" ? "notice" : "warning"]'>Your [LB.name] is [status].</span>")

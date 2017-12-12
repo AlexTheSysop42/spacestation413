@@ -35,6 +35,7 @@
 		new /datum/data/mining_equipment("Resonator",			/obj/item/resonator,												800),
 		new /datum/data/mining_equipment("Fulton Pack",			/obj/item/extraction_pack,										1000),
 		new /datum/data/mining_equipment("Lazarus Injector",	/obj/item/lazarus_injector,										1000),
+		new /datum/data/mining_equipment("Lazarus Capsule",     /obj/item/device/mobcapsule,                                    250),
 		new /datum/data/mining_equipment("Silver Pickaxe",		/obj/item/pickaxe/silver,										1000),
 		new /datum/data/mining_equipment("Jetpack Upgrade",		/obj/item/tank/jetpack/suit,										2000),
 		new /datum/data/mining_equipment("Space Cash",			/obj/item/stack/spacecash/c1000,										2000),

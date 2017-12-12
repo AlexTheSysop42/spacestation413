@@ -3,8 +3,8 @@
 	id = "troll"
 	default_color = "c4c4c4"
 	species_traits = list(MUTCOLORS,HAIR,FACEHAIR,LIPS,TROLLHORNS)
-	mutant_bodyparts = list("tail_human", "wings")
-	default_features = list("mcolor" = "c4c4c4", "tail_human" = "None", "wings" = "None")
+	mutant_bodyparts = list("tail_human", "wings", "horns_troll")
+	default_features = list("mcolor" = "c4c4c4", "tail_human" = "None", "wings" = "None", "horns_troll" = "Nubby", "troll_caste" = "burgundy")
 	use_skintones = 0
 	has_castes = 1
 	fixed_mut_color="c4c4c4"
@@ -36,7 +36,7 @@ datum/species/troll/on_species_gain(mob/living/carbon/human/H, datum/species/old
 	if(H.dna.features["tail_human"] == "Cat")
 		var/tail = /obj/item/organ/tail/cat
 		mutant_organs += tail
-	switch(H.troll_caste)
+	switch(H.dna.features["troll_caste"])
 		if("burgundy")
 			H.gib_type = /obj/effect/decal/cleanable/blood/gibs/troll_r
 		if("brown")

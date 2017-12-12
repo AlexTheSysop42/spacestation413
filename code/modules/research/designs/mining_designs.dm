@@ -112,3 +112,13 @@
 	build_path = /obj/item/borg/upgrade/modkit/aoe/turfs
 	category = list("Mining Designs", "Cyborg Upgrade Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO
+
+/datum/design/mobcapsule
+	name = "Lazarus Capsule"
+	desc = "A small capsule that can store and deploy non-hostile creatures."
+	id = "mobcapsule"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_DIAMOND = 150, MAT_BLUESPACE = 100)
+	build_path = /obj/item/device/mobcapsule
+	category = list("Mining Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_CARGO

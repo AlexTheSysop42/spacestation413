@@ -15,6 +15,7 @@
 	new /obj/item/reagent_containers/glass/bottle/toxin(src)
 	new /obj/item/reagent_containers/glass/bottle/morphine(src)
 	new /obj/item/reagent_containers/glass/bottle/morphine(src)
+	new /obj/item/bonegel(src)
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/glass/bottle/epinephrine(src)
 	for(var/i in 1 to 3)
@@ -42,6 +43,7 @@
 	..()
 	new /obj/item/device/radio/headset/headset_med(src)
 	new /obj/item/defibrillator/loaded(src)
+	new /obj/item/bonesetter(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/clothing/glasses/hud/health(src)
@@ -74,6 +76,7 @@
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/circuitboard/machine/protolathe/department/medical(src)
+	new /obj/item/bonesetter/bone_mender(src)
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control"

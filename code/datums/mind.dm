@@ -341,7 +341,7 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
-		
+
 
 	enslaved_to = creator
 
@@ -506,6 +506,13 @@
 				text += "<br>Objectives are empty! <a href='?src=[REF(src)];vampire=autoobjectives'>Randomize!</a>"
 		else
 			text += "<a href='?src=[REF(src)];vampire=vampire'>yes</a> | <b>NO</b>"
+
+		if(current && current.client && (ROLE_VAMPIRE in current.client.prefs.be_special))
+			text += " | Enabled in Prefs"
+		else
+			text += " | Disabled in Prefs"
+
+		sections["vampire"] = text
 
 		/** ENTHRALLED ***/
 		text += "<br><i><b>enthralled</b></i>: "

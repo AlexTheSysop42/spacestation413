@@ -47,11 +47,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		var/B_ninja = 1024
 		var/B_monkey = 2048
 		var/B_gang = 4096
+		var/B_vampire = 8192
 		var/B_abductor = 16384
 		var/B_brother = 32768
-		var/B_vampire = 65536
 
-		var/list/archived = list(B_traitor,B_operative,B_changeling,B_wizard,B_malf,B_rev,B_alien,B_pai,B_cultist,B_blob,B_ninja,B_monkey,B_gang,B_abductor,B_brother, B_vampire)
+
+		var/list/archived = list(B_traitor,B_operative,B_changeling,B_wizard,B_malf,B_rev,B_alien,B_pai,B_cultist,B_blob,B_ninja,B_monkey,B_gang, B_vampire,B_abductor,B_brother)
 
 		be_special = list()
 
@@ -83,12 +84,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 						be_special += ROLE_NINJA
 					if(2048)
 						be_special += ROLE_MONKEY
+					if(8192)
+						be_special += ROLE_VAMPIRE
 					if(16384)
 						be_special += ROLE_ABDUCTOR
 					if(32768)
 						be_special += ROLE_BROTHER
-					if(65536)
-						be_special += ROLE_VAMPIRE
+
 
 
 /datum/preferences/proc/update_preferences(current_version, savefile/S)
@@ -273,8 +275,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["facial_hair_color"]	>> facial_hair_color
 	S["eye_color"]			>> eye_color
 	S["skin_tone"]			>> skin_tone
-	S["troll_caste"]        >> troll_caste
-	S["troll_horn"]         >> troll_horn
+	S["troll_caste"]        >> features["troll_caste"]
+	S["troll_horn"]         >> features["horns_troll"]
 	S["hair_style_name"]	>> hair_style
 	S["facial_style_name"]	>> facial_hair_style
 	S["underwear"]			>> underwear
@@ -347,8 +349,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	facial_hair_color			= sanitize_hexcolor(facial_hair_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	skin_tone		= sanitize_inlist(skin_tone, GLOB.skin_tones)
-	troll_caste     = sanitize_inlist(troll_caste, GLOB.troll_castes)
-	troll_horn     = sanitize_inlist(troll_horn, GLOB.troll_horns_list)
+	features["troll_caste"]     = sanitize_inlist(features["troll_caste"], GLOB.troll_castes)
+	features["horns_troll"]     = sanitize_inlist(features["horns_troll"], GLOB.troll_horns_list)
 	backbag			= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
@@ -398,8 +400,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["skin_tone"]			, skin_tone)
 	WRITE_FILE(S["hair_style_name"]	, hair_style)
 	WRITE_FILE(S["facial_style_name"]	, facial_hair_style)
-	WRITE_FILE(S["troll_caste"] , troll_caste)
-	WRITE_FILE(S["troll_horn"] , troll_horn)
+	WRITE_FILE(S["troll_caste"] , features["troll_caste"])
+	WRITE_FILE(S["troll_horn"] , features["horns_troll"])
 	WRITE_FILE(S["underwear"]			, underwear)
 	WRITE_FILE(S["undershirt"]			, undershirt)
 	WRITE_FILE(S["socks"]				, socks)

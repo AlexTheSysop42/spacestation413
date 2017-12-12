@@ -11,6 +11,7 @@
 	throw_range = 2 //No head bowling
 	px_x = 0
 	px_y = -8
+	broken_description = "It hurts when you move it"
 
 	var/mob/living/brain/brainmob = null //The current occupant.
 	var/obj/item/organ/brain/brain = null //The brain organ

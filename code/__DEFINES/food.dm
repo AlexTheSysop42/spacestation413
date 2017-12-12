@@ -10,3 +10,4 @@
 #define SUGAR 512
 #define GROSS 1024
 #define TOXIC 2048
+#define BLOOD 4096
