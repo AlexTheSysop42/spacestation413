@@ -51,7 +51,7 @@
 			to_chat(user, "<span class='notice'>It has [amt] units of [lowertext(M.name)] stored.</span>")
 
 /datum/component/material_container/proc/MouseDrop_T(obj/item/I, mob/living/user)
-	proc/OnAttackBy(I, user)
+	OnAttackBy(I, user)
 
 /datum/component/material_container/proc/OnAttackBy(obj/item/I, mob/living/user)
 	var/list/tc = allowed_typecache
